@@ -1,5 +1,35 @@
 #Navbar {
-    // background-image: url(https://unsplash.com/photos/evlkOfkQ5rE);
-    // background: no-repeat center center fixed;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.1)), url('../img/popcorn.jpg') no-repeat center center fixed;
+    // background-color: ;
     background-size: cover;
+
+    .collapsing-items {
+        background-color: rgba(255, 228, 196, 0.8);
+        border-radius: 8px;
+
+        .collapsing-item {
+            border-bottom: 1px solid rgb(128, 100, 64);
+        }
+
+        .collapsing-item:last-of-type {
+            border: none;
+        }
+
+    }
+
+    @media screen and (min-width: 768px) {
+        .collapsing-items {
+            // background: linear-gradient(to right, rgba(255, 255, 255, 0), rgb(184, 154, 117), rgba(255, 255, 255, 0.3));
+            // border-radius: 0 8px 8px 0;
+            background: none;
+            text-shadow: rgb(184, 154, 117), rgb(184, 154, 117);
+
+
+            .collapsing-item {
+                border: none;
+                padding: 0.5em 1em 0.5em 1em;
+
+            }
+        }
+    }
 }
