@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { NavLink, Link } from 'react-router-dom'
-import Logo from '../assets/img/gunman.png'
+// import Logo from '../assets/img/gunman.png'
 
 const Navigation = () => {
 
@@ -14,7 +14,7 @@ const Navigation = () => {
 	};
 
 	return (
-		<Navbar id='Navbar' variant="dark" expand="md" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
+		<Navbar id='Navbar'/*  variant="dark"  */ expand="md" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
 			<Container>
 				<Navbar.Brand as={Link} to="/">
 					{/* <img src={Logo} alt="Man pointing a gun, being logo for the webpage" /> */}
