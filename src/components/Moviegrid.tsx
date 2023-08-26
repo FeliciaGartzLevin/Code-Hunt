@@ -10,7 +10,7 @@ const Moviegrid: React.FC<Props> = ({ movieArray }) => {
 	return (
 		<Container fluid className="d-flex justify-content-center">
 			{movieArray.length > 0 && (
-				<Row className="d-flex justify-content-center">
+				<Row className="d-flex justify-content-center gx-2 gy-3">
 					{movieArray.map(movie => (
 						<MovieCard
 							key={movie.id}
