@@ -6,6 +6,7 @@ import { Genre } from '../types/GenreTypes'
 
 type Props = {
 	genreArray: Genre[]
+
 }
 
 const GenreSelect: React.FC<Props> = ({ genreArray }) => {
@@ -15,13 +16,13 @@ const GenreSelect: React.FC<Props> = ({ genreArray }) => {
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 
-		console.log()
+		console.log('chosenGenreId:', typeof (chosenGenreId))
 	}
 
 	return (
 		<>
 			<h1 className='text-center text-md-start'>Search movie by genre</h1>
-			<p className='text-center text-md-start'>Choose a genre from the list and we'll show it to you</p>
+			<p className='text-center text-md-start'>Please choose a genre from the list and we'll show a list of the movies by that genre</p>
 
 			<Form onSubmit={handleSubmit}>
 				<Form.Label className='small'>Choose genre</Form.Label>

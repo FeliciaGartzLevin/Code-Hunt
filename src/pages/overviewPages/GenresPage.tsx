@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 import { getGenreList } from '../../services/TMDB-API'
 import GenreSelect from '../../components/GenreSelect'
 
-// filtrera enligt val
 // uppdatera searchParams efter val som i Movies Page
 
 const GenresPage = () => {
@@ -11,9 +10,10 @@ const GenresPage = () => {
 		["genre-list"],
 		getGenreList,
 	)
-	console.log(genreListQuery.data?.genres)
-
-	// const movieByGenreQuery = useQuery
+	const movieByGenreQuery = useQuery(
+		["movies-by-genre"],
+		getGenreList,
+	)
 
 	return (
 		<div id="GenresPage" className="all-pages">
