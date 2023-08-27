@@ -1,10 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 import Moviegrid from '../../components/Moviegrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
 
 const MoviesPage = () => {
+	const queryClient = useQueryClient()
 	const [filterPreference, setFilterPreference] = useState<string>(import.meta.env.VITE_POPULAR_URL)
 	// behöver sätta searchParam här till filterPreference
 
@@ -13,6 +14,13 @@ const MoviesPage = () => {
 		() => getMoviesByPreference(filterPreference),
 	)
 	console.log('filterPreference:', filterPreference)
+
+	const handleFiltering = async (choice: string) => {
+		await setFilterPreference(choice)
+		queryClient.invalidateQueries({ queryKey: ['movies'] })
+		queryMovies.refetch()
+	}
+
 	return (
 		<div id="MoviesPage" className="">
 
@@ -21,7 +29,7 @@ const MoviesPage = () => {
 
 			<FilterButtons
 				preference={filterPreference}
-				filterChoice={(choice) => setFilterPreference(choice)}
+				filterChoice={(choice) => handleFiltering(choice)}
 			/>
 
 			{queryMovies.data && (

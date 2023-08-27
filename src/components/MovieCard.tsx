@@ -17,7 +17,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 			<Card bg='dark' text='light' style={{ width: '14rem' }}>
 				<Link
 					to={'/movie/' + movie.id}>
-					<Card.Img variant="top" src={import.meta.env.VITE_IMG_URL + imgSize + movie.poster_path} />
+					{movie.poster_path && (<Card.Img variant="top" src={import.meta.env.VITE_IMG_URL + imgSize + movie.poster_path} />)}
 				</Link>
 				<Card.Body >
 					<Card.Title>{movie.title}</Card.Title>
