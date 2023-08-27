@@ -4,6 +4,10 @@ import Moviegrid from '../../components/Moviegrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
 import { useSearchParams } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
+import Loading from '../../assets/img/loading.gif'
+import { Button } from 'react-bootstrap';
 
 const MoviesPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -20,7 +24,6 @@ const MoviesPage = () => {
 		setSearchParams({ q: choice })
 	}
 
-
 	useEffect(() => {
 		queryMovies.refetch()
 		setFilterPreference(q)
@@ -32,14 +35,32 @@ const MoviesPage = () => {
 
 			<h1 className='text-center text-md-start'>Movies</h1>
 
-			{/* {queryMovies.isError} */}
+			{queryMovies.isError &&
+				<Alert variant='danger'>
+					Something went wrong.
+					<div className='mt-2'>
+						<Button
+							variant='secondary'
+							onClick={() => queryMovies.refetch()}
+						>
+							Try again
+						</Button>
+					</div>
+				</Alert>
+			}
 
-			<FilterButtons
-				preference={filterPreference}
-				filterChoice={(choice) => handleFiltering(choice)}
-			/>
+			{queryMovies.isLoading &&
+				<Image src={Loading} />
+			}
 
-			{queryMovies.data && (
+			{!queryMovies.isError &&
+				<FilterButtons
+					preference={filterPreference}
+					filterChoice={(choice) => handleFiltering(choice)}
+				/>
+			}
+
+			{queryMovies.data && !queryMovies.isLoading && !queryMovies.isError && (
 				<Moviegrid
 					movieArray={queryMovies.data.results}
 				/>
