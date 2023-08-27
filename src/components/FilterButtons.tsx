@@ -34,13 +34,14 @@ const FilterButtons: React.FC<Props> = ({ preference, filterChoice }) => {
 
 		<Stack className='d-flex justify-content-center my-3' direction="horizontal" gap={3}>
 			{buttons && buttons.map(btn => {
-				const prefClass = preference === btn.url ? 'pref-border' : ''
+				const prefClass = preference === btn.url ? 'pref-border disabled' : ''
 				return (
 					<Button
 						key={btn.id}
 						className={prefClass + ' px-3 py-1 filter-btns'}
 						variant="secondary"
 						onClick={() => filterChoice(btn.url)}
+					// disabled={preference === btn.url}
 					>
 						{btn.title}
 					</Button>

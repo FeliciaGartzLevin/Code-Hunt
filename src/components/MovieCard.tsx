@@ -22,8 +22,13 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 				<Card.Body >
 					<Card.Title>{movie.title}</Card.Title>
 					<div className='mb-3'>
-						<p className="text-secondary m-0">
-							Year: {year.getFullYear()}
+						<p className="d-flex justify-content-between text-secondary m-0">
+							<span>
+								Year: {year.getFullYear()}
+							</span>
+							<span>
+								{movie.original_language.toUpperCase()}
+							</span>
 						</p>
 						{movie.overview.slice(0, 70) + '...'}
 					</div>
