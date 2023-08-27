@@ -5,7 +5,7 @@ import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
 
 const MoviesPage = () => {
-	const [filterPreference, setFilterPreference] = useState<string>('/movie/popular')
+	const [filterPreference, setFilterPreference] = useState<string>(import.meta.env.VITE_POPULAR_URL)
 	// behöver sätta searchParam här till filterPreference
 
 	const queryMovies = useQuery(

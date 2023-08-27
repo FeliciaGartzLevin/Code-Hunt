@@ -13,17 +13,17 @@ const buttons: FilterButton[] = [
 	{
 		id: 1,
 		title: 'latest',
-		url: `/discover/movie?with_release_type=2|1&primary_release_date.lte=${today}&sort_by=primary_release_date.desc`,
+		url: import.meta.env.VITE_LATEST_URL + today,
 	},
 	{
 		id: 2,
 		title: 'most popular',
-		url: '/movie/popular'
+		url: import.meta.env.VITE_POPULAR_URL
 	},
 	{
 		id: 3,
 		title: 'top rated',
-		url: '/movie/top_rated'
+		url: import.meta.env.VITE_TOP_RATED_URL
 	},
 
 ]
