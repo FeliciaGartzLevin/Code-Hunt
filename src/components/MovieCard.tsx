@@ -13,7 +13,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 	const imgSize = 'w200'
 
 	return (
-		<Col className='d-flex justify-content-center '>
+		<Col className='d-flex justify-content-center mx-1 my-3'>
 			<Card bg='dark' text='light' style={{ width: '14rem' }}>
 				<Link
 					to={'/movie/' + movie.id}>
