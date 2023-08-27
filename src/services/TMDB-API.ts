@@ -33,8 +33,9 @@ const get = async <T>(endpoint: string) => {
 
 // skicka in 'popular' eller 'top_rated' eller den sista vad var den?
 export const getMoviesByPreference = (sortingPreference: string) => {
-	return get<MovieResponse>('/movie/' + sortingPreference)
+	return get<MovieResponse>(sortingPreference)
 }
+
 
 // /**
 //  * Get a single todo

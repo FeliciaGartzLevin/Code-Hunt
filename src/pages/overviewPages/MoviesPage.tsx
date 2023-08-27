@@ -5,16 +5,14 @@ import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
 
 const MoviesPage = () => {
-	const [filterPreference, setFilterPreference] = useState<FilterPreference>('popular')
-	// eller en useSearchParam
+	const [filterPreference, setFilterPreference] = useState<string>('/movie/popular')
+	// behöver sätta searchParam här till filterPreference
 
 	const queryMovies = useQuery(
-		["movies"], //fast jag vill ju att mina movies sparas när jag klickar emellan filtreringen
+		["movies"],
 		() => getMoviesByPreference(filterPreference),
 	)
-
-	console.log(filterPreference)
-
+	console.log('filterPreference:', filterPreference)
 	return (
 		<div id="MoviesPage" className="">
 
@@ -22,7 +20,6 @@ const MoviesPage = () => {
 			<h1 className='text-center text-md-start'>Movies</h1>
 
 			<FilterButtons
-				/* behöver skicka ut knappvalet hit */
 				preference={filterPreference}
 				filterChoice={(choice) => setFilterPreference(choice)}
 			/>

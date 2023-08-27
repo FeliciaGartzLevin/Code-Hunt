@@ -3,25 +3,27 @@ import Stack from 'react-bootstrap/Stack'
 import React from 'react'
 
 type Props = {
-	preference: FilterPreference,
-	filterChoice: (choice: FilterPreference) => void
+	preference: string,
+	filterChoice: (choice: string) => void
 }
+
+const today = new Date().toLocaleDateString()
 
 const buttons: FilterButton[] = [
 	{
 		id: 1,
 		title: 'latest',
-		url: 'latest',
+		url: `/discover/movie?with_release_type=2|1&primary_release_date.lte=${today}&sort_by=primary_release_date.desc`,
 	},
 	{
 		id: 2,
 		title: 'most popular',
-		url: 'popular'
+		url: '/movie/popular'
 	},
 	{
 		id: 3,
 		title: 'top rated',
-		url: 'top_rated'
+		url: '/movie/top_rated'
 	},
 
 ]
