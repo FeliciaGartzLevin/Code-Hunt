@@ -6,7 +6,7 @@ type Props = {
 	movieArray: Movie[]
 }
 
-const Moviegrid: React.FC<Props> = ({ movieArray }) => {
+const MovieGrid: React.FC<Props> = ({ movieArray }) => {
 	return (
 		<Container fluid className="d-flex justify-content-center">
 			{movieArray.length > 0 && (
@@ -25,4 +25,4 @@ const Moviegrid: React.FC<Props> = ({ movieArray }) => {
 	)
 }
 
-export default Moviegrid
+export default MovieGrid

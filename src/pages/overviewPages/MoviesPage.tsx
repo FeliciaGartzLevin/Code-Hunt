@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import MovieGrid from '../../components/MovieGrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import Loading from '../../assets/img/loading.gif'
@@ -32,8 +32,12 @@ const MoviesPage = () => {
 	return (
 		<div id="MoviesPage" className="">
 
-
 			<h1 className='text-center text-md-start'>Movies</h1>
+
+			{/* Gör en toastify av denna
+			<Link to={'/genres'}>
+				<p className="small">If you rather see the movies by genre, click here &raquo;</p>
+			</Link> */}
 
 			{queryMovies.isError &&
 				<Alert variant='danger'>
