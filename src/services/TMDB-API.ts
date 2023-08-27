@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { GenreList } from '../types/GenreTypes'
 
 const FAKE_DELAY = 0
 // const notAdult = 'include_adult=false'
@@ -28,12 +29,14 @@ const get = async <T>(endpoint: string) => {
 }
 
 /**
- * Get either most popular or top_rated movies in descending order
+ * Get movielist based on url
  */
-
-// skicka in 'popular' eller 'top_rated' eller den sista vad var den?
 export const getMoviesByPreference = (sortingPreference: string) => {
 	return get<MovieResponse>(sortingPreference)
+}
+
+export const getGenreList = () => {
+	return get<GenreList>('/genre/movie/list?')
 }
 
 
@@ -46,38 +49,3 @@ export const getMoviesByPreference = (sortingPreference: string) => {
 //     return get<Todo>('/todos/' + todo_id)
 // }
 
-// /**
-//  * Create a new todo
-//  *
-//  * @param data Object with properties and values for the new todo
-//  */
-// export const createTodo = async (todo: NewTodo) => {
-//     const res = await axios.post(`${BASE_URL}/todos`, todo)
-//     return res.data as Todo
-// }
-
-// /**
-//  * Update a todo
-//  *
-//  * @param todo_id Todo to update
-//  * @param data Data to update todo with
-//  */
-// export const updateTodo = async (todo_id: number, data: PartialTodo) => {
-//     const res = await axios.patch(`${BASE_URL}/todos/${todo_id}`, data)
-//     return res.data as Todo
-// }
-
-// export const toggleTodo = async (todo: Todo) => {
-//     const res = await axios.patch(`${BASE_URL}/todos/${todo.id}`, todo)
-//     return res.data as Todo
-// }
-
-// /**
-//  * Delete a todo
-//  *
-//  * @param todo_id Todo to delete
-//  */
-// export const deleteTodo = async (todo_id: number) => {
-//     const res = await axios.delete(`${BASE_URL}/todos/${todo_id}`)
-//     return res.data
-// }

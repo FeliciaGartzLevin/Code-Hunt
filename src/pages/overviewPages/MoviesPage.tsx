@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
-import Moviegrid from '../../components/Moviegrid';
+import MovieGrid from '../../components/MovieGrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
 import { useSearchParams } from 'react-router-dom';
@@ -61,7 +61,7 @@ const MoviesPage = () => {
 			}
 
 			{queryMovies.data && !queryMovies.isLoading && !queryMovies.isError && (
-				<Moviegrid
+				<MovieGrid
 					movieArray={queryMovies.data.results}
 				/>
 			)}

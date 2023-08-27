@@ -29,7 +29,6 @@ const buttons: FilterButton[] = [
 ]
 
 const FilterButtons: React.FC<Props> = ({ preference, filterChoice }) => {
-	/* Preference ska göra en vit border runt det valda filtret */
 	return (
 
 		<Stack className='d-flex justify-content-center my-3' direction="horizontal" gap={3}>
@@ -41,14 +40,12 @@ const FilterButtons: React.FC<Props> = ({ preference, filterChoice }) => {
 						className={prefClass + ' px-3 py-1 filter-btns'}
 						variant="secondary"
 						onClick={() => filterChoice(btn.url)}
-					// disabled={preference === btn.url}
 					>
 						{btn.title}
 					</Button>
 
 				)
 			})}
-
 		</Stack >
 
 	)

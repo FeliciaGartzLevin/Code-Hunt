@@ -1,7 +1,4 @@
-type FilterPreference =
-	null |
-	'popular' |
-	'top_rated'
+
 
 type FilterButton = {
 	id: number,

@@ -1,12 +1,30 @@
-import React from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { getGenreList } from '../../services/TMDB-API'
+import GenreSelect from '../../components/GenreSelect'
+
+// filtrera enligt val
+// uppdatera searchParams efter val som i Movies Page
 
 const GenresPage = () => {
-    return (
-        <div id="GenresPage" className="all-pages">
-            <h1>GenresPage</h1>
-            <p>I'm baby polaroid offal you probably haven't heard of them gochujang edison bulb yr. Tumeric poutine cold-pressed neutra meh, gorpcore post-ironic paleo tattooed twee craft beer green juice hell of. Messenger bag godard kitsch, marxism paleo migas sustainable skateboard locavore kale chips. Small batch narwhal truffaut forage pickled shaman cardigan leggings tousled gochujang mumblecore. Gatekeep franzen meh neutra kickstarter same tumeric man braid shaman vice butcher occupy Brooklyn cold-pressed.</p>
-        </div>
-    )
+
+	const genreListQuery = useQuery(
+		["genre-list"],
+		getGenreList,
+	)
+	console.log(genreListQuery.data?.genres)
+
+	// const movieByGenreQuery = useQuery
+
+	return (
+		<div id="GenresPage" className="all-pages">
+			{
+				genreListQuery.data &&
+				<GenreSelect
+					genreArray={genreListQuery.data?.genres}
+				/>
+			}
+		</div>
+	)
 }
 
 export default GenresPage
