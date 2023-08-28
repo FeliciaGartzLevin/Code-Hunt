@@ -9,6 +9,7 @@ import Image from 'react-bootstrap/Image';
 import Loading from '../../assets/img/loading.gif'
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify'
+import { MovieResponse } from '../../types/MovieTypes';
 
 const MoviesPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()

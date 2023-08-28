@@ -10,14 +10,11 @@ import { MovieResponse } from '../../types/MovieTypes'
 
 const GenresPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
-	const q = searchParams.get("q") ?? ''
+	const currentGenreId = searchParams.get("with_genres") ?? ''
 	const [genre, setGenre] = useState<Genre | null>(null)
-	const genreId = q.slice(q.lastIndexOf('with_genres='))
+	const url = window.location.search
 
-	{ genreId && console.log(genreId) }
-
-	console.log(q)
-	console.log(searchParams)
+	console.log('currentGenreId:', currentGenreId)
 
 	const genreListQuery = useQuery(
 		["genre-list"],
@@ -25,11 +22,11 @@ const GenresPage = () => {
 	)
 	const moviesByGenreQuery = useQuery(
 		["movies-by-genre"],
-		() => getMoviesByPreference<MovieResponse>(q),
+		() => getMoviesByPreference<MovieResponse>(import.meta.env.VITE_MOVIE_BY_GENRE_URL + url),
 	)
 
 	const handleChoice = (genreId: string) => {
-		setSearchParams({ q: import.meta.env.VITE_MOVIE_BY_GENRE_URL + genreId })
+		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 		if (!genreListQuery.data) return
 		if (!genreListQuery.data.genres) return
 		setGenre(genreListQuery.data.genres.find(genre => genre.id === Number(genreId)) ?? null)
@@ -37,7 +34,7 @@ const GenresPage = () => {
 
 	useEffect(() => {
 		moviesByGenreQuery.refetch()
-	}, [q])
+	}, [url])
 
 
 	return (

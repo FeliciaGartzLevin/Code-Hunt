@@ -31,7 +31,7 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 
 					<Col>
 						{movieData.genres.map((genre, index: number) => (
-							<Link key={genre.id} to={'/genres?q=' + import.meta.env.VITE_MOVIE_BY_GENRE_URL + genre.id}>
+							<Link key={genre.id} to={'/genres?page=1&sort_by=popularity.desc&with_genres=' + String(genre.id)}>
 								<span>{genre.name}
 									{index === movieData.genres.length - 1 ? '' : ', '}
 								</span>
