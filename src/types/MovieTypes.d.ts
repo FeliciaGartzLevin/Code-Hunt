@@ -1,3 +1,5 @@
+import { Genre } from "./GenreTypes"
+
 type MovieResponse = {
 	page: number,
 	results: Movie[],
@@ -23,11 +25,6 @@ type Movie = {
 	vote_average: number,
 	vote_count: number,
 
-}
-
-type idName = {
-	id: number,
-	name: string
 }
 
 type ProductionCompany = {
@@ -88,7 +85,7 @@ type DetailedMovie = {
 	backdrop_path: string,
 	belongs_to_collection: number | null,
 	budget: number,
-	genres: idName[],
+	genres: Genre[],
 	homepage: string,
 	id: number,
 	imdb_id: string,

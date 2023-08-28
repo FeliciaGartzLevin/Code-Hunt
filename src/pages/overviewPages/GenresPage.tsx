@@ -2,15 +2,22 @@ import { useQuery } from '@tanstack/react-query'
 import { getGenreList, getMoviesByPreference } from '../../services/TMDB-API'
 import GenreSelect from '../../components/GenreSelect'
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import MovieGrid from '../../components/MovieGrid'
 import { Genre } from '../../types/GenreTypes'
 import Container from 'react-bootstrap/Container'
+import { MovieResponse } from '../../types/MovieTypes'
 
 const GenresPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const q = searchParams.get("q") ?? ''
 	const [genre, setGenre] = useState<Genre | null>(null)
+	const genreId = q.slice(q.lastIndexOf('with_genres='))
+
+	{ genreId && console.log(genreId) }
+
+	console.log(q)
+	console.log(searchParams)
 
 	const genreListQuery = useQuery(
 		["genre-list"],
@@ -50,6 +57,7 @@ const GenresPage = () => {
 					<h2 className='m-4 h4'>{genre.name}</h2>
 				</Container>
 			}
+
 			{!moviesByGenreQuery.isStale && moviesByGenreQuery.data && moviesByGenreQuery.data.results.length > 0 &&
 				<>
 					<MovieGrid
