@@ -8,7 +8,7 @@ import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import Loading from '../../assets/img/loading.gif'
 import { Button } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 const MoviesPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -18,7 +18,7 @@ const MoviesPage = () => {
 
 	const queryMovies = useQuery(
 		["movies"],
-		() => getMoviesByPreference(q),
+		() => getMoviesByPreference<MovieResponse>(q),
 	)
 
 	const handleFiltering = async (choice: string) => {
@@ -46,15 +46,6 @@ const MoviesPage = () => {
 		<div id="MoviesPage" className="">
 
 			<h1 className='text-center text-md-start'>Movies</h1>
-			{/* 	{
-				toast.info(
-					<>
-						<p>Would you rather find movies by genre?</p>
-						<Link to={'/genres'}>
-							<Button variant='secondary'>To genres &raquo;</Button>
-						</Link>
-					</>)
-			} */}
 
 			{queryMovies.isError &&
 				<Alert variant='danger'>

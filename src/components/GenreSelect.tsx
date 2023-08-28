@@ -7,9 +7,10 @@ import { Genre } from '../types/GenreTypes'
 type Props = {
 	genreArray: Genre[]
 	onChoice: (genreId: string) => void
+	genreIsLoading: boolean
 }
 
-const GenreSelect: React.FC<Props> = ({ genreArray, onChoice }) => {
+const GenreSelect: React.FC<Props> = ({ genreArray, onChoice, genreIsLoading }) => {
 	const [chosenGenreId, setChosenGenreId] = useState<string | null>(null)
 
 	const handleSubmit = (e: React.FormEvent) => {
@@ -23,9 +24,10 @@ const GenreSelect: React.FC<Props> = ({ genreArray, onChoice }) => {
 	return (
 		<>
 			<Form onSubmit={handleSubmit}>
-				<Form.Label className='small label'>Choose genre</Form.Label>
+
+				<Form.Label id='select' className='small label'>Choose genre</Form.Label>
 				<Form.Group className='input-group m-auto'>
-					<Form.Select id='select' onChange={e => setChosenGenreId(e.target.value)} title='choose-genre' aria-label="Choose a genre">
+					<Form.Select aria-labelledby='select' onChange={e => setChosenGenreId(e.target.value)} title="choose-genre" aria-label="Choose a genre">
 						<option>Genre</option>
 
 						{genreArray.length > 0 && genreArray.map(genre => {
@@ -37,11 +39,12 @@ const GenreSelect: React.FC<Props> = ({ genreArray, onChoice }) => {
 					<Button
 						type='submit'
 						variant='success'
-					// disabled={when data is loading}
+						disabled={genreIsLoading}
 					>
 						Confirm
 					</Button>
 				</Form.Group>
+				{/* </Form.Label> om denna ligger här ist blir select-rutan smalare */}
 			</Form>
 		</>
 	)

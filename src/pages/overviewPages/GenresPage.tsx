@@ -18,7 +18,7 @@ const GenresPage = () => {
 	)
 	const moviesByGenreQuery = useQuery(
 		["movies-by-genre"],
-		() => getMoviesByPreference(q),
+		() => getMoviesByPreference<MovieResponse>(q),
 	)
 
 	const handleChoice = (genreId: string) => {
@@ -40,6 +40,7 @@ const GenresPage = () => {
 
 			{genreListQuery.data &&
 				<GenreSelect
+					genreIsLoading={moviesByGenreQuery.isLoading}
 					onChoice={handleChoice}
 					genreArray={genreListQuery.data?.genres}
 				/>
@@ -49,7 +50,7 @@ const GenresPage = () => {
 					<h2 className='m-4 h4'>{genre.name}</h2>
 				</Container>
 			}
-			{/* !moviesByGenreQuery.isStale &&  */moviesByGenreQuery.data && moviesByGenreQuery.data.results.length > 0 &&
+			{!moviesByGenreQuery.isStale && moviesByGenreQuery.data && moviesByGenreQuery.data.results.length > 0 &&
 				<>
 					<MovieGrid
 						movieArray={moviesByGenreQuery.data.results}

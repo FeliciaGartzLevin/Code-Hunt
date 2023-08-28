@@ -31,10 +31,14 @@ const get = async <T>(endpoint: string) => {
 /**
  * Get movielist based on url
  */
-export const getMoviesByPreference = (sortingPreference: string) => {
-	return get<MovieResponse>(sortingPreference)
+export const getMoviesByPreference = <T>(sortingPreference: string) => {
+	return get<T>(sortingPreference)
 }
 
+/**
+ * Get genres
+ * @returns an array of the available genres
+ */
 export const getGenreList = () => {
 	return get<GenreList>('/genre/movie/list?')
 }
