@@ -1,5 +1,4 @@
-import React from 'react'
-import { Button } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
 const HomePage = () => {
@@ -11,8 +10,9 @@ const HomePage = () => {
 
 			<Link
 				to={'/movies/'}>
-				<Button variant="secondary">Search movies</Button>
+				<Button variant="secondary">See movies</Button>
 			</Link>
+
 		</div>
 
 	)

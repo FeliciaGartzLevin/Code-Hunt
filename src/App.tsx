@@ -1,6 +1,7 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Route, Routes } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
+import { ToastContainer } from 'react-toastify'
 import './assets/scss/App.scss'
 
 //import pages
@@ -18,6 +19,11 @@ const App = () => {
 	return (
 		<div id="App">
 			<Navigation />
+
+			<ToastContainer
+
+
+			/>
 
 			<Container className="py-3">
 				<Routes>
@@ -38,7 +44,6 @@ const App = () => {
 			</Container>
 
 			<ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
-
 		</div>
 	)
 }

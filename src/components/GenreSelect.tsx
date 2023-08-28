@@ -22,20 +22,13 @@ const GenreSelect: React.FC<Props> = ({ genreArray, onChoice }) => {
 
 	return (
 		<>
-			<h1 className='text-center text-md-start'>Search movie by genre</h1>
-			<p className='text-center text-md-start'>Please select a genre below and we'll show a list of the movies by that genre</p>
-
 			<Form onSubmit={handleSubmit}>
-				<Form.Label className='small'>Choose genre</Form.Label>
+				<Form.Label className='small label'>Choose genre</Form.Label>
 				<Form.Group className='input-group m-auto'>
-					<Form.Select onChange={e => setChosenGenreId(e.target.value)} title='choose-genre' aria-label="Choose a genre">
+					<Form.Select id='select' onChange={e => setChosenGenreId(e.target.value)} title='choose-genre' aria-label="Choose a genre">
 						<option>Genre</option>
 
 						{genreArray.length > 0 && genreArray.map(genre => {
-							// hur gör man en tvåvägsbindning här så att selecten visar
-							// aktuellt filter även efter omladdning av sidan?
-							// en useState? Men hur ska man då få rätt id om inte valuet visar det?
-							// eller det gör det väl om man tar det från url:en?
 							return <option key={genre.id} value={genre.id}>{genre.name}</option>
 						})}
 

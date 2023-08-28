@@ -8,11 +8,13 @@ import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import Loading from '../../assets/img/loading.gif'
 import { Button } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify'
 
 const MoviesPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const q = searchParams.get("q") ?? import.meta.env.VITE_POPULAR_URL
 	const [filterPreference, setFilterPreference] = useState<string>(q ?? import.meta.env.VITE_POPULAR_URL)
+	const customId = 1
 
 	const queryMovies = useQuery(
 		["movies"],
@@ -29,15 +31,30 @@ const MoviesPage = () => {
 		setFilterPreference(q)
 	}, [q])
 
+	useEffect(() => {
+		toast(
+			<>
+				<p>Would you rather find movies by genre?</p>
+				<Link to={'/genres'}>
+					<Button variant='secondary'>To genres &raquo;</Button>
+				</Link>
+			</>
+			, { toastId: customId })
+	}, [])
+
 	return (
 		<div id="MoviesPage" className="">
 
 			<h1 className='text-center text-md-start'>Movies</h1>
-
-			{/* Gör en toastify av denna
-			<Link to={'/genres'}>
-				<p className="small">If you rather see the movies by genre, click here &raquo;</p>
-			</Link> */}
+			{/* 	{
+				toast.info(
+					<>
+						<p>Would you rather find movies by genre?</p>
+						<Link to={'/genres'}>
+							<Button variant='secondary'>To genres &raquo;</Button>
+						</Link>
+					</>)
+			} */}
 
 			{queryMovies.isError &&
 				<Alert variant='danger'>
