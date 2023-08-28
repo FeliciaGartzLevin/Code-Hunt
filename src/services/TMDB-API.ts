@@ -2,7 +2,7 @@ import axios from 'axios'
 import { GenreList } from '../types/GenreTypes'
 
 const FAKE_DELAY = 0
-// const notAdult = 'include_adult=false'
+
 const API_DEFAULT_PARAMS = {
 	include_adult: false,
 }
@@ -42,14 +42,3 @@ export const getMoviesByPreference = <T>(sortingPreference: string) => {
 export const getGenreList = () => {
 	return get<GenreList>('/genre/movie/list?')
 }
-
-
-// /**
-//  * Get a single todo
-//  *
-//  * @param todo_id Todo ID to get
-//  */
-// export const getTodo = (todo_id: number) => {
-//     return get<Todo>('/todos/' + todo_id)
-// }
-
