@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getGenreList, getMoviesByPreference } from '../../services/TMDB-API'
 import GenreSelect from '../../components/GenreSelect'
 import { useEffect, useState } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import MovieGrid from '../../components/MovieGrid'
 import { Genre } from '../../types/GenreTypes'
 import Container from 'react-bootstrap/Container'
@@ -35,6 +35,12 @@ const GenresPage = () => {
 	useEffect(() => {
 		moviesByGenreQuery.refetch()
 	}, [url])
+
+	useEffect(() => {
+		if (!genreListQuery.data) return
+		if (!genreListQuery.data.genres) return
+		setGenre(genreListQuery.data.genres.find(genre => genre.id === Number(currentGenreId)) ?? null)
+	}, [])
 
 
 	return (
