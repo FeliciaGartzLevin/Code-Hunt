@@ -17,6 +17,7 @@ const MoviesPage = () => {
 	// const q = searchParams.get("q") ?? import.meta.env.VITE_POPULAR_URL
 	const [filterPreference, setFilterPreference] = useState<string>( /* url that is sent ?? */ import.meta.env.VITE_POPULAR_URL)
 	const customToastId = 1
+	const [clickedBtn, setClickedBtn] = useState<FilterButton | null>(null)
 
 	const queryMovies = useQuery(
 		["movies"],
@@ -27,6 +28,7 @@ const MoviesPage = () => {
 		// ta emot knapp här istället och sätt ihop strängen som ska sökas på
 		// + ändra searchparams
 
+		// setClickedBtn(chosenBtn)
 		if (chosenBtn.search_params) {
 			setSearchParams(chosenBtn.search_params)
 			setFilterPreference(chosenBtn.url + `?with_release_type=${chosenBtn.search_params.with_release_type}&primary_release_date.lte=${chosenBtn.search_params.primary_release_date_lte}&sort_by=${chosenBtn.search_params.sort_by}`)
@@ -37,7 +39,7 @@ const MoviesPage = () => {
 		console.log('filterPreference:', filterPreference)
 		// await setFilterPreference(choice)
 		// console.log(choice)
-		// setSearchParams({ q: choice })
+		// setSearchParams({ choice: chosenBtn.id })
 	}
 
 	useEffect(() => {
