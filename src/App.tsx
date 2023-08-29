@@ -15,11 +15,13 @@ import APICredPage from './pages/overviewPages/APICredPage'
 import PersonPage from './pages/detailPages/PersonPage'
 import MoviePage from './pages/detailPages/MoviePage'
 import InCinemaMoviesPage from './pages/overviewPages/InCinemaMoviePage'
+import HandleAllLoading from './components/HandleAllLoading'
 
 const App = () => {
 	return (
 		<div id="App">
 			<Navigation />
+			<HandleAllLoading />
 
 			<ToastContainer />
 
