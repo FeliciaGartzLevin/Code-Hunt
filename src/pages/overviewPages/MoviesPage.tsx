@@ -10,27 +10,40 @@ import Loading from '../../assets/img/loading.gif'
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify'
 import { MovieResponse } from '../../types/MovieTypes';
+import { FilterButton } from '../../types/FilterBtns';
 
 const MoviesPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
-	const q = searchParams.get("q") ?? import.meta.env.VITE_POPULAR_URL
-	const [filterPreference, setFilterPreference] = useState<string>(q ?? import.meta.env.VITE_POPULAR_URL)
-	const customId = 1
+	// const q = searchParams.get("q") ?? import.meta.env.VITE_POPULAR_URL
+	const [filterPreference, setFilterPreference] = useState<string>( /* url that is sent ?? */ import.meta.env.VITE_POPULAR_URL)
+	const customToastId = 1
 
 	const queryMovies = useQuery(
 		["movies"],
-		() => getMoviesByPreference<MovieResponse>(q),
+		() => getMoviesByPreference<MovieResponse>(filterPreference),
 	)
 
-	const handleFiltering = async (choice: string) => {
-		await setFilterPreference(choice)
-		setSearchParams({ q: choice })
+	const handleFiltering = async (chosenBtn: FilterButton) => {
+		// ta emot knapp här istället och sätt ihop strängen som ska sökas på
+		// + ändra searchparams
+
+		if (chosenBtn.search_params) {
+			setSearchParams(chosenBtn.search_params)
+			setFilterPreference(chosenBtn.url + `?with_release_type=${chosenBtn.search_params.with_release_type}&primary_release_date.lte=${chosenBtn.search_params.primary_release_date_lte}&sort_by=${chosenBtn.search_params.sort_by}`)
+			return
+		}
+		setFilterPreference(chosenBtn.url)
+		setSearchParams({})
+		console.log('filterPreference:', filterPreference)
+		// await setFilterPreference(choice)
+		// console.log(choice)
+		// setSearchParams({ q: choice })
 	}
 
 	useEffect(() => {
 		queryMovies.refetch()
-		setFilterPreference(q)
-	}, [q])
+		// setFilterPreference(q)
+	}, [filterPreference])
 
 	useEffect(() => {
 		toast(
@@ -40,7 +53,7 @@ const MoviesPage = () => {
 					<Button variant='secondary'>To genres &raquo;</Button>
 				</Link>
 			</>
-			, { toastId: customId })
+			, { toastId: customToastId })
 	}, [])
 
 	return (
@@ -68,8 +81,8 @@ const MoviesPage = () => {
 
 			{!queryMovies.isError &&
 				<FilterButtons
-					preference={filterPreference}
-					filterChoice={(choice) => handleFiltering(choice)}
+					// preference={filterPreference}
+					filterChoice={(chosenBtn) => handleFiltering(chosenBtn)}
 				/>
 			}
 

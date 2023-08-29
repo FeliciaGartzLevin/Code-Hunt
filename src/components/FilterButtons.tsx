@@ -1,11 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack'
 import React from 'react'
-
-type Props = {
-	preference: string,
-	filterChoice: (choice: string) => void
-}
+import { FilterButton } from '../types/FilterBtns'
 
 const today = new Date().toLocaleDateString()
 
@@ -13,7 +9,12 @@ const buttons: FilterButton[] = [
 	{
 		id: 1,
 		title: 'latest',
-		url: import.meta.env.VITE_LATEST_URL + today,
+		url: import.meta.env.VITE_LATEST_URL,
+		search_params: {
+			with_release_type: '2|1',
+			sort_by: 'primary_release_date.desc',
+			primary_release_date_lte: String(today),
+		}
 	},
 	{
 		id: 2,
@@ -28,18 +29,34 @@ const buttons: FilterButton[] = [
 
 ]
 
-const FilterButtons: React.FC<Props> = ({ preference, filterChoice }) => {
+type Props = {
+	// preference: string,
+	filterChoice: (chosenBtn: FilterButton) => void
+	// choicesArray:
+}
+
+const FilterButtons: React.FC<Props> = ({ /* preference, */ filterChoice }) => {
+	// const [borderClass, setBorderClass] = useState<string>('')
+
+	const handleClick = (btn: FilterButton) => {
+		filterChoice(btn)
+
+		// setBorderClass()
+	}
+
 	return (
 
 		<Stack className='d-flex justify-content-center my-3' direction="horizontal" gap={3}>
 			{buttons && buttons.map(btn => {
-				const prefClass = preference === btn.url ? 'pref-border disabled' : ''
+				// måste ändra denna för den funkar inte längre efter ändrad kod med search params:
+				// const prefClass = preference === btn.url ? 'pref-border disabled' : ''
+
 				return (
 					<Button
 						key={btn.id}
-						className={prefClass + ' px-3 py-1 filter-btns'}
+						className={/* prefClass +  */' px-3 py-1 filter-btns'}
 						variant="secondary"
-						onClick={() => filterChoice(btn.url)}
+						onClick={() => handleClick(btn)}
 					>
 						{btn.title}
 					</Button>

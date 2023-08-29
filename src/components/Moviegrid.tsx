@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import MovieCard from './MovieCard';
+import { Movie } from '../types/MovieTypes';
 
 type Props = {
 	movieArray: Movie[]
