@@ -5,18 +5,18 @@ import FilterButtons from '../../components/FilterButtons';
 import Alert from 'react-bootstrap/Alert';
 
 import { Button } from 'react-bootstrap';
-import { NowPlayingMovieResponse } from '../../types/MovieTypes';
+import { MovieResponse } from '../../types/MovieTypes';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
 const InCinemaMoviesPage = () => {
 	const { preferenceURL } = useParams()
+	const [getUrl, setGetUrl] = useState<string>(import.meta.env.VITE_NOW_PLAYING_URL)
 
 	const queryMovies = useQuery(
-		["movies", preferenceURL],
-		() => getMoviesByPreference<NowPlayingMovieResponse>(import.meta.env.VITE_NOW_PLAYING_URL),
+		["movies", { preferenceURL }],
+		() => getMoviesByPreference<MovieResponse>(getUrl),
 	)
-
-
 
 	return (
 		<div id="MoviesPage" className="">
@@ -39,6 +39,7 @@ const InCinemaMoviesPage = () => {
 
 			{!queryMovies.isError &&
 				<FilterButtons
+					choice={(url: string) => setGetUrl(url)}
 					currentUrl={preferenceURL}
 				/>
 			}

@@ -1,15 +1,13 @@
 import { Genre } from "./GenreTypes"
 
 type MovieResponse = {
+	dates?: MinMax
 	page: number,
 	results: Movie[],
 	total_pages: number,
 	total_results: number,
 }
 
-export type NowPlayingMovieResponse = MovieResponse & {
-	dates: MinMax
-}
 export type MinMax = {
 	maximum: string,
 	minimum: string,

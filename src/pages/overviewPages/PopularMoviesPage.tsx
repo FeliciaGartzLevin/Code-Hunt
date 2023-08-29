@@ -8,11 +8,11 @@ import { Button } from 'react-bootstrap';
 import { MovieResponse } from '../../types/MovieTypes';
 import { useParams } from 'react-router-dom';
 
-const InCinemaMoviesPage = () => {
+const PopularMoviesPage = () => {
 	const { preferenceURL } = useParams()
 
 	const queryMovies = useQuery(
-		["movies", preferenceURL],
+		["movies", { preferenceURL }],
 		() => getMoviesByPreference<MovieResponse>(import.meta.env.VITE_POPULAR_URL),
 	)
 
@@ -51,4 +51,4 @@ const InCinemaMoviesPage = () => {
 	)
 }
 
-export default InCinemaMoviesPage
+export default PopularMoviesPage
