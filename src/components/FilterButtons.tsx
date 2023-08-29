@@ -3,18 +3,12 @@ import Stack from 'react-bootstrap/Stack'
 import React from 'react'
 import { FilterButton } from '../types/FilterBtns'
 
-const today = new Date().toLocaleDateString()
 
 const buttons: FilterButton[] = [
 	{
 		id: 1,
-		title: 'latest',
-		url: import.meta.env.VITE_LATEST_URL,
-		search_params: {
-			with_release_type: '2|1',
-			sort_by: 'primary_release_date.desc',
-			primary_release_date_lte: String(today),
-		}
+		title: 'in cinemas',
+		url: import.meta.env.VITE_NOW_PLAYING_URL,
 	},
 	{
 		id: 2,
