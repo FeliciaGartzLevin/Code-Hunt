@@ -5,7 +5,7 @@ import FilterButtons from '../../components/FilterButtons';
 import Alert from 'react-bootstrap/Alert';
 
 import { Button } from 'react-bootstrap';
-import { NowPlayingMovieResponse } from '../../types/MovieTypes';
+import { MovieResponse } from '../../types/MovieTypes';
 import { useParams } from 'react-router-dom';
 
 const InCinemaMoviesPage = () => {
@@ -13,10 +13,8 @@ const InCinemaMoviesPage = () => {
 
 	const queryMovies = useQuery(
 		["movies", preferenceURL],
-		() => getMoviesByPreference<NowPlayingMovieResponse>(import.meta.env.VITE_NOW_PLAYING_URL),
+		() => getMoviesByPreference<MovieResponse>(import.meta.env.VITE_POPULAR_URL),
 	)
-
-
 
 	return (
 		<div id="MoviesPage" className="">

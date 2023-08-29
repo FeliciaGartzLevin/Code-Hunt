@@ -31,7 +31,7 @@ const App = () => {
 					<Route path='/*' element={<NotFound />} />
 
 					<Route path='/movies' element={<MoviesPage />} />
-					<Route path='/movies/:now_playing' element={<InCinemaMoviesPage />} />
+					<Route path='/movies/:preferenceURL' element={<InCinemaMoviesPage />} />
 					<Route path='/movie/:movieId' element={<MoviePage />} />
 
 					<Route path='/people' element={<PeoplePage />} />

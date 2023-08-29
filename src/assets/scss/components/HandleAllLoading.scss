@@ -7,11 +7,9 @@
 	z-index: 100000;
 
 	#loading-img {
-		background-image: url('../../img/loading.gif') cover;
 		width: 12rem;
 		border: $breadFont-color solid 0.35rem;
 		border-radius: 8rem;
-
 	}
 
 }

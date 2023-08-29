@@ -39,15 +39,17 @@ const FilterButtons: React.FC<Props> = ({ currentUrl }) => {
 				const prefClasses = currentUrl === btn.url ? 'pref-border disabled' : ''
 
 				return (
-					<Button
-						key={btn.id}
-						className={prefClasses + ' px-3 py-1 filter-btns'}
-						variant="secondary"
-						onClick={() => navigate('/movies/' + btn.url)
-						}
-					>
-						{btn.title}
-					</Button>
+					<>
+						<Button
+							key={btn.id}
+							className={prefClasses + ' px-3 py-1 filter-btns'}
+							variant="secondary"
+							onClick={() => navigate('/movies/' + btn.url)}
+						>
+							{btn.title}
+						</Button>
+
+					</>
 
 				)
 			})}
