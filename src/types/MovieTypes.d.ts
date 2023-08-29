@@ -6,6 +6,15 @@ type MovieResponse = {
 	total_pages: number,
 	total_results: number,
 }
+
+export type NowPlayingMovieResponse = MovieResponse & {
+	dates: MinMax
+}
+export type MinMax = {
+	maximum: string,
+	minimum: string,
+}
+
 // <Old type, key(s) to replace, new type(s) of the key(s)>
 type DetailedMovieRespons = ChangeTypeOfKeys<MovieResponse, 'response', DetailedMovie>
 

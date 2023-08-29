@@ -14,16 +14,14 @@ import GenresPage from './pages/overviewPages/GenresPage'
 import APICredPage from './pages/overviewPages/APICredPage'
 import PersonPage from './pages/detailPages/PersonPage'
 import MoviePage from './pages/detailPages/MoviePage'
+import InCinemaMoviesPage from './pages/overviewPages/InCinemaMoviePage'
 
 const App = () => {
 	return (
 		<div id="App">
 			<Navigation />
 
-			<ToastContainer
-
-
-			/>
+			<ToastContainer />
 
 			<Container className="py-3">
 				<Routes>
@@ -31,6 +29,7 @@ const App = () => {
 					<Route path='/*' element={<NotFound />} />
 
 					<Route path='/movies' element={<MoviesPage />} />
+					<Route path='/movies/:now_playing' element={<InCinemaMoviesPage />} />
 					<Route path='/movie/:movieId' element={<MoviePage />} />
 
 					<Route path='/people' element={<PeoplePage />} />

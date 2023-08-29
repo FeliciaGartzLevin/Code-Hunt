@@ -1,37 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
 import MovieGrid from '../../components/MovieGrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/FilterButtons';
-import { Link } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert';
 import Image from 'react-bootstrap/Image';
 import Loading from '../../assets/img/loading.gif'
 import { Button } from 'react-bootstrap';
-import { toast } from 'react-toastify'
-import { MovieResponse } from '../../types/MovieTypes';
+import { NowPlayingMovieResponse } from '../../types/MovieTypes';
+import { useParams } from 'react-router-dom';
 
-const MoviesPage = () => {
+const InCinemaMoviesPage = () => {
+	const { now_playing } = useParams()
+
 	// const [searchParams, setSearchParams] = useSearchParams()
 	// const q = searchParams.get("q") ?? import.meta.env.VITE_POPULAR_URL
-	const [filterPreference, setFilterPreference] = useState<string>( /* url that is sent ?? */ import.meta.env.VITE_POPULAR_URL)
-	const customToastId = 1
 
 	const queryMovies = useQuery(
-		["movies"],
-		() => getMoviesByPreference<MovieResponse>(filterPreference),
+		["movies-now-playing"],
+		() => getMoviesByPreference<NowPlayingMovieResponse>(import.meta.env.VITE_NOW_PLAYING_URL),
 	)
-
-	useEffect(() => {
-		toast(
-			<>
-				<p>Would you rather find movies by genre?</p>
-				<Link to={'/genres'}>
-					<Button variant='secondary'>To genres &raquo;</Button>
-				</Link>
-			</>
-			, { toastId: customToastId })
-	}, [])
 
 	return (
 		<div id="MoviesPage" className="">
@@ -58,7 +45,7 @@ const MoviesPage = () => {
 
 			{!queryMovies.isError &&
 				<FilterButtons
-					prefClassesActive={false}
+					currentUrl={now_playing}
 				/>
 			}
 
@@ -72,4 +59,4 @@ const MoviesPage = () => {
 	)
 }
 
-export default MoviesPage
+export default InCinemaMoviesPage
