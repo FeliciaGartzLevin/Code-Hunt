@@ -15,7 +15,7 @@ const SeeMoviesPage = () => {
 	const filters = FilterButtonsArray
 	// getting the right url for queryMovies by finding which preference filter matches preferenceURL-param
 	const currentGenre = filters.find(pref => pref.url === preferenceURL)!.queryUrl
-	const [getUrl, setGetUrl] = useState<string>(currentGenre) //ändra denna sen
+	const [getUrl, setGetUrl] = useState<string>(currentGenre)
 
 	const queryMovies = useQuery(
 		["movies", { preferenceURL }],
