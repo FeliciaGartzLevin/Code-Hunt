@@ -15,14 +15,38 @@
 		color: $link-hover-color;
 	}
 
-	.italic {
-		font-style: italic;
+	.quote-container {
+		position: relative;
+		display: inline-block;
+		padding: 4.2rem;
+		margin: 0;
+
+		.italic {
+			font-style: italic;
+		}
+
+		.quotes {
+			color: $quote-marks-color;
+			font-family: $quote-marks-font;
+			font-weight: $quote-marks-font-weight;
+			font-size: 10rem;
+			margin: 0;
+		}
+
+		.start-quote {
+			transform: rotate(-180deg);
+			position: absolute;
+			top: $quote-offset;
+			left: $quote-offset;
+		}
+
+		.end-quote {
+			position: absolute;
+			bottom: $quote-offset;
+			right: $quote-offset;
+		}
+
+
 	}
 
 }
-
-
-/* a:link: the regular state of the link when it is not active, visited, or hovered on
-a:visited: when the link has been clicked by the user, that is, visited
-a:hover: when the user is hovering on the link
-a:active: when the user is clicking on the link */

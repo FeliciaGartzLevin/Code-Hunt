@@ -27,19 +27,31 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 						<h1>{movieData.title}</h1>
 						<p>Release date: {movieData.release_date}</p>
 
-						<span>&ldquo;</span><p className='italic'>{movieData.tagline}</p><span>&bdquo;</span>
+						<div className='quote-container'>
+							<div className='start-quote'>
+								<span className='quotes'>&bdquo;</span>
+							</div>
+
+							<span className='italic m-0'>{movieData.tagline}</span>
+
+							<div className='end-quote'>
+								<span className='quotes'>&bdquo;</span>
+							</div>
+						</div>
+
 						{/* movieData.original_title !== movieData.title && */ //kommentera tillbaks detta när layout är klar
 							<p>Original title: {movieData.original_title}</p>
 						}
 						<p>Original language: {movieData.original_language.toUpperCase()}</p>
-						<span className='mb-3'>Genres: </span>
-						{movieData.genres.map((genre, index: number) => (
-							<Link key={genre.id} to={'/genres?page=1&sort_by=popularity.desc&with_genres=' + String(genre.id)}>
-								<span>{genre.name}
-									{index === movieData.genres.length - 1 ? '' : ', '}
-								</span>
-							</Link>
-						))}
+						<p>Genres:&nbsp;    {/* just a space */}
+							{movieData.genres.map((genre, index: number) => (
+								<Link key={genre.id} to={'/genres?page=1&sort_by=popularity.desc&with_genres=' + String(genre.id)}>
+									<span>{genre.name}
+										{index === movieData.genres.length - 1 ? '' : ', '}
+									</span>
+								</Link>
+							))}
+						</p>
 						<p>{movieData.overview}</p>
 						{/* <Col>
 						</Col> */}
