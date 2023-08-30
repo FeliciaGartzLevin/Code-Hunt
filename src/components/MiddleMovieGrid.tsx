@@ -9,8 +9,12 @@ type Props = {
 }
 
 const MiddleMovieGrid: React.FC<Props> = ({ movieData }) => {
-	const popul = Math.floor(movieData.popularity)
-	const arity = String(movieData.popularity).slice(String(movieData.popularity).lastIndexOf('.'))
+	const arity = String(movieData.vote_average).slice(String(movieData.vote_average).lastIndexOf('.'))
+	const popul = Math.floor(movieData.vote_average)
+
+	console.log('movieData.vote_average:', movieData.vote_average)
+	console.log('popul:', popul)
+	console.log('arity:', arity)
 
 	// counting runtime:
 	const runtime = Number(movieData.runtime)
@@ -30,9 +34,9 @@ const MiddleMovieGrid: React.FC<Props> = ({ movieData }) => {
 
 				</Col >
 				<Col className='mx-3 d-flex justify-content-center'>
-					<p>Popularity:&nbsp;
+					<p>Avg vote:&nbsp;
 						<span className='popul'>{popul}</span>
-						<sub className='arity'>{arity}</sub>
+						<sup className='arity'>{arity}</sup>
 					</p>
 
 				</Col>

@@ -51,7 +51,7 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 
 				<GriddedMovieInfo
 					title='Average vote'>
-					{movieData.vote_average}
+					{movieData.popularity}
 				</GriddedMovieInfo>
 
 				<GriddedMovieInfo
