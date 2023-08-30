@@ -1,6 +1,31 @@
 @import "../styles.scss";
 
-.hours {
+.popul {
+	color: $quote-marks-color;
 	font-family: $quote-marks-font;
 	font-size: 4rem;
+}
+
+.arity {
+	font-size: 1rem;
+}
+
+.hours {
+	color: $quote-marks-color;
+	font-family: $quote-marks-font;
+	font-size: 6rem;
+}
+
+/* .hours-hr {
+	font-weight: lighter;
+} */
+
+.minutesWrap {
+	white-space: nowrap;
+
+	.minutes {
+		font-size: 2rem;
+		color: $quote-marks-color;
+		font-family: $quote-marks-font;
+	}
 }

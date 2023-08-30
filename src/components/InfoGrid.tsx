@@ -9,6 +9,13 @@ type Props = {
 }
 
 const InfoGrid: React.FC<Props> = ({ movieData }) => {
+
+	const spoken_lang = movieData.spoken_languages.map((lang, index: number) => (
+		<span>{lang.name}
+			{index === movieData.spoken_languages.length - 1 ? '' : ', '}
+		</span>
+	))
+
 	return (
 		<Container fluid className="info-grid d-flex align-items-center flex-direction-column">
 			<Row className="d-flex justify-content-start">
@@ -25,6 +32,11 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 				<GriddedMovieInfo
 					title='Original title'>
 					'{movieData.original_title}'
+				</GriddedMovieInfo>
+
+				<GriddedMovieInfo
+					title='Spoken languages'>
+					{spoken_lang}
 				</GriddedMovieInfo>
 
 				<GriddedMovieInfo
