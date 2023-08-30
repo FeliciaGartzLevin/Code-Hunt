@@ -24,8 +24,6 @@ const SeeMoviesPage = () => {
 
 			<h1 className='text-center text-md-start'>Movies</h1>
 
-
-
 			<FilterButtons
 				choice={(url: string) => setGetUrl(url)}
 			/>

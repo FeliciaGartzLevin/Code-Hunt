@@ -1,5 +1,28 @@
+@import "./styles.scss";
+
 .all-pages {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 0.7em;
-    border-radius: 8px;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.7em;
+	border-radius: 8px;
+
+	a {
+		text-decoration-line: none;
+		color: $link-color;
+		font-weight: bold;
+	}
+
+	a:hover {
+		color: $link-hover-color;
+	}
+
+	.italic {
+		font-style: italic;
+	}
+
 }
+
+
+/* a:link: the regular state of the link when it is not active, visited, or hovered on
+a:visited: when the link has been clicked by the user, that is, visited
+a:hover: when the user is hovering on the link
+a:active: when the user is clicking on the link */
