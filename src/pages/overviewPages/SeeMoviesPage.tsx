@@ -8,14 +8,19 @@ import { Button } from 'react-bootstrap';
 import { MovieResponse } from '../../types/MovieTypes';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import FilterButtonsArray from '../../data/FilterBtnArray';
 
-const InCinemaMoviesPage = () => {
+const SeeMoviesPage = () => {
 	const { preferenceURL } = useParams()
-	const [getUrl, setGetUrl] = useState<string>(import.meta.env.VITE_POPULAR_URL) //ändra denna sen
+	const filters = FilterButtonsArray
+	// getting the right url for queryMovies by finding which preference filter matches preferenceURL-param
+	const currentGenre = filters.find(pref => pref.url === preferenceURL)!.queryUrl
+	const [getUrl, setGetUrl] = useState<string>(currentGenre) //ändra denna sen
 
 	const queryMovies = useQuery(
 		["movies", { preferenceURL }],
 		() => getMoviesByPreference<MovieResponse>(getUrl),
+		{ enabled: !!getUrl }
 	)
 
 	return (
@@ -54,4 +59,4 @@ const InCinemaMoviesPage = () => {
 	)
 }
 
-export default InCinemaMoviesPage
+export default SeeMoviesPage

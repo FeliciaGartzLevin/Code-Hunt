@@ -7,8 +7,12 @@ type MovieResponse = {
 	total_results: number,
 }
 
-// <Old type, key(s) to replace, new type(s) of the key(s)>
-type DetailedMovieRespons = ChangeTypeOfKeys<MovieResponse, 'response', DetailedMovie[]>
+type DetailedMovieResponse = {
+	page: number,
+	results: DetailedMovie[],
+	total_pages: number,
+	total_results: number,
+}
 
 type Movie = {
 	adult: boolean,
@@ -110,20 +114,3 @@ type DetailedMovie = {
 	credits: Credits
 
 }
-
-/**
- * A type utility map made by https://dev.to/denniscual/typescript-hack-simple-utility-type-for-changing-type-of-keys-4bba
- *
- * Change the type of Keys of T from NewType
- */
-export type ChangeTypeOfKeys<
-	T extends object,
-	Keys extends keyof T,
-	NewType
-> = {
-		// Loop to every key. We gonna check if the key
-		// is assignable to Keys. If yes, change the type.
-		// Else, retain the type.
-		[key in keyof T]: key extends Keys ? NewType : T[key]
-	}
-

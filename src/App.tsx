@@ -14,7 +14,7 @@ import GenresPage from './pages/overviewPages/GenresPage'
 import APICredPage from './pages/overviewPages/APICredPage'
 import PersonPage from './pages/detailPages/PersonPage'
 import MoviePage from './pages/detailPages/MoviePage'
-import InCinemaMoviesPage from './pages/overviewPages/InCinemaMoviePage'
+import SeeMoviesPage from './pages/overviewPages/SeeMoviesPage'
 import HandleAllLoading from './components/HandleAllLoading'
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
 					<Route path='/*' element={<NotFound />} />
 
 					<Route path='/movies' element={<MoviesPage />} />
-					<Route path='/movies/:preferenceURL' element={<InCinemaMoviesPage />} />
+					<Route path='/movies/:preferenceURL' element={<SeeMoviesPage />} />
 					<Route path='/movie/:movieId' element={<MoviePage />} />
 
 					<Route path='/people' element={<PeoplePage />} />
