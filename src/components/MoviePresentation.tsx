@@ -6,6 +6,7 @@ import { DetailedMovie } from '../types/MovieTypes'
 import InfoGrid from './InfoGrid'
 import UpperMovieGrid from './UpperMovieGrid'
 import MiddleMovieGrid from './MiddleMovieGrid'
+import MovieCast from './MovieCast'
 
 type Props = {
 	movieData: DetailedMovie
@@ -26,15 +27,16 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 			{/* när jag visar actors till en movie: ta från cast de med 10-15 högst
 			popularity och visa deras bilder. Övrig cast kan jag rendera ut i en scrolllista*/}
 
-			<h2 className='h4' > Short movie Facts:</h2>
+			<MovieCast
+				cast={movieData.credits.cast}
+			/>
 			<InfoGrid
 				movieData={movieData}
 			/>
 
-			{/* <Container> */}
 
+			{/* <Container> */}
 			{/* <p>{movieData.credits.crew.map()}</p> */}
-			{/* <p>{movieData.credits.cast.map()}</p> */}
 			{/* <p>{movieData.production_companies.map()}</p> */}
 			{/* </Container> */}
 

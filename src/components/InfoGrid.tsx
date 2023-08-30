@@ -17,49 +17,53 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 	))
 
 	return (
-		<Container fluid className="info-grid d-flex align-items-center flex-direction-column">
-			<Row className="d-flex justify-content-start">
-				<GriddedMovieInfo
-				>
-					<span><strong>Budget: </strong></span>
-					<span>${movieData.budget.toLocaleString()}</span>
-				</GriddedMovieInfo>
+		<>
+			<h2 className='h4'> Short movie facts:</h2>
 
-				<GriddedMovieInfo>
-					<a href={movieData.homepage}>Homepage</a>
-				</GriddedMovieInfo>
+			<Container fluid className="info-grid d-flex align-items-center flex-direction-column">
+				<Row className="d-flex justify-content-start">
+					<GriddedMovieInfo
+					>
+						<span><strong>Budget: </strong></span>
+						<span>${movieData.budget.toLocaleString()}</span>
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Original title'>
-					'{movieData.original_title}'
-				</GriddedMovieInfo>
+					<GriddedMovieInfo>
+						<a href={movieData.homepage}>Homepage</a>
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Spoken languages'>
-					{spoken_lang}
-				</GriddedMovieInfo>
+					<GriddedMovieInfo
+						title='Original title'>
+						'{movieData.original_title}'
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Revenue'>
-					${movieData.revenue.toLocaleString()}
-				</GriddedMovieInfo>
+					<GriddedMovieInfo
+						title='Spoken languages'>
+						{spoken_lang}
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Status'>
-					{movieData.status}
-				</GriddedMovieInfo>
+					<GriddedMovieInfo
+						title='Revenue'>
+						${movieData.revenue.toLocaleString()}
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Average vote'>
-					{movieData.popularity}
-				</GriddedMovieInfo>
+					<GriddedMovieInfo
+						title='Status'>
+						{movieData.status}
+					</GriddedMovieInfo>
 
-				<GriddedMovieInfo
-					title='Vote count'>
-					{movieData.vote_count} votes
-				</GriddedMovieInfo>
-			</Row>
-		</Container >
+					<GriddedMovieInfo
+						title='Average vote'>
+						{movieData.popularity}
+					</GriddedMovieInfo>
+
+					<GriddedMovieInfo
+						title='Vote count'>
+						{movieData.vote_count} votes
+					</GriddedMovieInfo>
+				</Row>
+			</Container >
+		</>
 	)
 }
 

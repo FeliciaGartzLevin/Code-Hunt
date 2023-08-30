@@ -9,7 +9,6 @@ import Navigation from './components/Navigation'
 import HomePage from './pages/overviewPages/HomePage'
 import NotFound from './pages/overviewPages/NotFound'
 import MoviesPage from './pages/overviewPages/MoviesPage'
-import PeoplePage from './pages/overviewPages/PeoplePages'
 import GenresPage from './pages/overviewPages/GenresPage'
 import APICredPage from './pages/overviewPages/APICredPage'
 import PersonPage from './pages/detailPages/PersonPage'
@@ -34,8 +33,7 @@ const App = () => {
 					<Route path='/movies/:preferenceURL' element={<SeeMoviesPage />} />
 					<Route path='/movie/:movieId' element={<MoviePage />} />
 
-					<Route path='/people' element={<PeoplePage />} />
-					<Route path='/person/:personId' element={<PersonPage />} />
+					<Route path='/actor/:actorId' element={<PersonPage />} />
 
 					<Route path='/genres' element={<GenresPage />} />
 
