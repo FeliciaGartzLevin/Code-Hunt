@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 const InCinemaMoviesPage = () => {
 	const { preferenceURL } = useParams()
-	const [getUrl, setGetUrl] = useState<string>(import.meta.env.VITE_NOW_PLAYING_URL)
+	const [getUrl, setGetUrl] = useState<string>(import.meta.env.VITE_POPULAR_URL) //ändra denna sen
 
 	const queryMovies = useQuery(
 		["movies", { preferenceURL }],

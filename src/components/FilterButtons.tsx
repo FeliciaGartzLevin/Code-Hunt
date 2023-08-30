@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom'
 const buttons: FilterButton[] = [
 	{
 		id: 1,
-		title: 'in cinemas',
-		url: 'now_playing',
-		queryUrl: import.meta.env.VITE_NOW_PLAYING_URL
+		title: 'trending',
+		url: 'trending',
+		queryUrl: import.meta.env.VITE_TRENDING_URL
 	},
 	{
 		id: 2,

@@ -1,20 +1,14 @@
 import { Genre } from "./GenreTypes"
 
 type MovieResponse = {
-	dates?: MinMax
 	page: number,
 	results: Movie[],
 	total_pages: number,
 	total_results: number,
 }
 
-export type MinMax = {
-	maximum: string,
-	minimum: string,
-}
-
 // <Old type, key(s) to replace, new type(s) of the key(s)>
-type DetailedMovieRespons = ChangeTypeOfKeys<MovieResponse, 'response', DetailedMovie>
+type DetailedMovieRespons = ChangeTypeOfKeys<MovieResponse, 'response', DetailedMovie[]>
 
 type Movie = {
 	adult: boolean,
