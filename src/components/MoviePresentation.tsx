@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { DetailedMovie } from '../types/MovieTypes'
 import { Link } from 'react-router-dom'
+import MovieTagLine from './MovieTagLine'
 
 type Props = {
 	movieData: DetailedMovie
@@ -25,19 +26,11 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 					</Col>
 					<Col xl={6} md={6} sm={12}>
 						<h1>{movieData.title}</h1>
-						<p>Release date: {movieData.release_date}</p>
+						<p className='mb-0'>Release date: {movieData.release_date}</p>
 
-						<div className='quote-container'>
-							<div className='start-quote'>
-								<span className='quotes'>&bdquo;</span>
-							</div>
-
-							<span className='italic m-0'>{movieData.tagline}</span>
-
-							<div className='end-quote'>
-								<span className='quotes'>&bdquo;</span>
-							</div>
-						</div>
+						<MovieTagLine
+							tagline={movieData.tagline}
+						/>
 
 						{/* movieData.original_title !== movieData.title && */ //kommentera tillbaks detta när layout är klar
 							<p>Original title: {movieData.original_title}</p>
@@ -53,8 +46,6 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 							))}
 						</p>
 						<p>{movieData.overview}</p>
-						{/* <Col>
-						</Col> */}
 					</Col>
 				</Row>
 			</Container>
@@ -64,7 +55,8 @@ popularity och visa deras bilder. Övrig cast kan jag rendera ut i en scrolllist
 			<Container fluid className="d-flex align-items-center flex-direction-column">
 
 				<Row className="d-flex flex-direction-column">
-					<p>hejhej</p>
+					<p>Budget: {movieData.budget}</p>
+					<p>Homepage: <a href={movieData.homepage}>{movieData.homepage}</a></p>
 				</Row>
 			</Container>
 
