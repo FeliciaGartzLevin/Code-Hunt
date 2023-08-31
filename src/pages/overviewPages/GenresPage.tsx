@@ -53,7 +53,6 @@ const GenresPage = () => {
 
 	// functions for handling page switching
 	const handlePagination = (directionNumber: number, currentGenreId: string) => {
-		console.log('number from pagination component:', directionNumber)
 		const pageNum = Number(currentPage) + directionNumber
 		setSearchParams({ page: String(pageNum), sort_by: 'popularity.desc', with_genres: currentGenreId })
 	}

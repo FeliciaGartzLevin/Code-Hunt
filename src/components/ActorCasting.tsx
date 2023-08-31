@@ -27,7 +27,7 @@ const ActorCasting: React.FC<Props> = ({ cast }) => {
 					<tbody>
 						{cast && cast.map(movie => {
 							return (
-								<tr>
+								<tr key={movie.credit_id}>
 									<td><Link id='actor-links' to={'/movie/' + movie.id}>{movie.title}</Link></td>
 									<td>{movie.release_date}</td>
 									<td>{movie.vote_average}</td>

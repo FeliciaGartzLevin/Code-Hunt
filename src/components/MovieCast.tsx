@@ -33,7 +33,7 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 					<tbody>
 						{actorsWithoutPics && actorsWithoutPics.map(actor => {
 							return (
-								<tr>
+								<tr key={actor.cast_id}>
 									<td><Link id='actor-links' to={'/actor/' + actor.id}>{actor.name}</Link></td>
 									<td>{actor.character}</td>
 									<td>{actor.popularity}</td>

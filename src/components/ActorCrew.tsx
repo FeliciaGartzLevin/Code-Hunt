@@ -27,7 +27,7 @@ const ActorCasting: React.FC<Props> = ({ crew }) => {
 					<tbody>
 						{crew && crew.map(project => {
 							return (
-								<tr>
+								<tr key={project.credit_id}>
 									<td><Link id='actor-links' to={'/movie/' + project.id}>{project.title}</Link></td>
 									<td>{project.job}</td>
 									<td>{project.release_date}</td>

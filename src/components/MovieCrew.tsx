@@ -25,7 +25,7 @@ const MovieCrew: React.FC<Props> = ({ crew }) => {
 					<tbody>
 						{crew && crew.map(crew => {
 							return (
-								<tr key={crew.id}>
+								<tr key={crew.credit_id}>
 									<td>{crew.name}</td>
 									<td>{crew.job}</td>
 									<td>{crew.known_for_department}</td>

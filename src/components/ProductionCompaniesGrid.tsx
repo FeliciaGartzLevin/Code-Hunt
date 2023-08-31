@@ -18,12 +18,12 @@ const ProductionCompaniesGrid: React.FC<Props> = ({ production_companies }) => {
 			<Container fluid className='mb-3'>
 
 				<Row className='bg-white rounded d-flex justify-content-center'>
-					<p>{production_companies.map(company => {
+					{production_companies.map(company => {
 						return (
-							<Col className='p-2 d-flex justify-content-center'>
+							<Col key={company.id} className='p-2 d-flex justify-content-center'>
 
 								{company.logo_path ? (
-									<Image key={company.id} src={import.meta.env.VITE_IMG_URL + imgSize + company.logo_path} style={{
+									<Image src={import.meta.env.VITE_IMG_URL + imgSize + company.logo_path} style={{
 										height: '3rem',
 									}} />
 								) :
@@ -31,7 +31,7 @@ const ProductionCompaniesGrid: React.FC<Props> = ({ production_companies }) => {
 								}
 							</Col>
 						)
-					})}</p>
+					})}
 
 				</Row>
 			</Container>
