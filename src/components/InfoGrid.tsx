@@ -17,8 +17,8 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 	))
 
 	return (
-		<>
-			<h2 className='h4'> Short movie facts:</h2>
+		<div className='mb-3'>
+			<h3 > Short movie facts:</h3>
 
 			<Container fluid className="info-grid d-flex align-items-center flex-direction-column">
 				<Row className="d-flex justify-content-start">
@@ -63,7 +63,7 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 					</GriddedMovieInfo>
 				</Row>
 			</Container >
-		</>
+		</div>
 	)
 }
 

@@ -1,13 +1,11 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { DetailedMovie } from '../types/MovieTypes'
 import InfoGrid from './InfoGrid'
 import UpperMovieGrid from './UpperMovieGrid'
 import MiddleMovieGrid from './MiddleMovieGrid'
 import MovieCast from './MovieCast'
 import MovieCrew from './MovieCrew'
+import ProductionCompaniesGrid from './ProductionCompaniesGrid'
 
 type Props = {
 	movieData: DetailedMovie
@@ -40,10 +38,10 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 				movieData={movieData}
 			/>
 
+			<ProductionCompaniesGrid
+				production_companies={movieData.production_companies}
+			/>
 
-			{/* <Container> */}
-			{/* <p>{movieData.production_companies.map()}</p> */}
-			{/* </Container> */}
 
 		</>
 	)
