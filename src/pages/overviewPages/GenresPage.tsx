@@ -7,17 +7,19 @@ import MovieGrid from '../../components/Moviegrid'
 import { Genre } from '../../types/GenreTypes'
 import Container from 'react-bootstrap/Container'
 import { MovieResponse } from '../../types/MovieTypes'
+import PageNavigation from '../../components/PageNavigation'
 
 
 const GenresPage = () => {
 	// const queryClient = new QueryClient()
 	const [searchParams, setSearchParams] = useSearchParams()
 	const currentGenreId = searchParams.get("with_genres") ?? ''
+	const currentPage = searchParams.get("page") ?? 1
 	const [genre, setGenre] = useState<Genre | null>(null)
 	const url = window.location.search
 
 	const genreListQuery = useQuery(
-		["genre-list"],
+		["genre-list", { currentGenreId }, { currentPage }],
 		getGenreList,
 	)
 
@@ -50,6 +52,18 @@ const GenresPage = () => {
 		findGenre(currentGenreId)
 	}, [moviesByGenreQuery.isSuccess])
 
+	// functions for handling page switching
+	const handlePagination = (directionNumber: number, currentGenreId: string) => {
+		console.log('number from pagination component:', directionNumber)
+		const pageNum = Number(currentPage) + directionNumber
+		setSearchParams({ page: String(pageNum), sort_by: 'popularity.desc', with_genres: currentGenreId })
+	}
+
+	const toLastOrFirstPage = (page: number) => {
+		setSearchParams({ page: String(page), sort_by: 'popularity.desc', with_genres: currentGenreId })
+
+	}
+
 	return (
 		<div id="GenresPage">
 			<h1 className='text-center text-md-start'>Find movies by genre</h1>
@@ -67,6 +81,20 @@ const GenresPage = () => {
 					<h2 className='m-4 h4'>{genre.name}</h2>
 				</Container>
 			}
+
+			{currentPage &&
+				moviesByGenreQuery.data &&
+				moviesByGenreQuery.data.total_pages &&
+				currentGenreId &&
+				(
+					<PageNavigation
+						currentGenreId={currentGenreId}
+						currentPage={Number(currentPage)}
+						total_pages={moviesByGenreQuery.data.total_pages}
+						changeToPage={handlePagination}
+						toLastOrFirstPage={toLastOrFirstPage}
+					/>
+				)}
 
 			{!moviesByGenreQuery.isStale && moviesByGenreQuery.data && moviesByGenreQuery.data.results.length > 0 &&
 				<>

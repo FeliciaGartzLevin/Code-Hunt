@@ -8,7 +8,7 @@ const HomePage = () => {
 			<p>
 				Code Hunt is a school project in the continuation course in Javascript during my second year of the&nbsp;
 				<Link to={'https://medieinstitutet.se/utbildningar/front-end-developer/'}>
-					Front End Developer Vocational University program at Mediainstitutet
+					Front End Developer Vocational University program at Medieinstitutet
 				</Link>.&nbsp;
 				In this project, I retrieve data from TMDB's API using Tanstack Query. Other technologies used in addition to it include Typescript, React, React-Bootstrap, React Router and SCSS.			</p>
 

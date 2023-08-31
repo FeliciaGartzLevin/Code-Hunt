@@ -23,11 +23,11 @@ const GenreSelect: React.FC<Props> = ({ genreArray, onChoice, genreIsLoading }) 
 
 	return (
 		<>
-			<Form onSubmit={handleSubmit}>
+			<Form className='mb-4' onSubmit={handleSubmit}>
 
 				<Form.Label id='select' className='small label'>Choose genre</Form.Label>
-				<Form.Group className='input-group m-auto'>
-					<Form.Select aria-labelledby='select' onChange={e => setChosenGenreId(e.target.value)} title="choose-genre" aria-label="Choose a genre">
+				<Form.Group className='input-group m-auto' aria-labelledby='select'>
+					<Form.Select onChange={e => setChosenGenreId(e.target.value)} title="choose-genre" aria-label="Choose a genre">
 						<option>Genre</option>
 
 						{genreArray.length > 0 && genreArray.map(genre => {
