@@ -13,8 +13,10 @@ export type ActorResponse = {
 	place_of_birth: string,
 	popularity: number,
 	profile_path: string,
-	credits: ActorCast[],
-	crew: ActorCrew[]
+	credits: {
+		cast: ActorCast[],
+		crew: ActorCrew[],
+	}
 	id: number,
 
 }

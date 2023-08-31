@@ -1,6 +1,8 @@
 import React from 'react'
 import { ActorResponse } from '../types/ActorTypes'
 import UpperActorGrid from './UpperActorGrid'
+import ActorCasting from './ActorCasting'
+import ActorCrew from './ActorCrew'
 
 
 type Props = {
@@ -13,6 +15,13 @@ const ActorPresentation: React.FC<Props> = ({ actorData }) => {
 		<>
 			<UpperActorGrid
 				actorData={actorData}
+			/>
+
+			<ActorCasting
+				cast={actorData.credits.cast} />
+
+			<ActorCrew
+				crew={actorData.credits.crew}
 			/>
 		</>
 	)
