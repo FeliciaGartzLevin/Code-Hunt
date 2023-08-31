@@ -24,7 +24,7 @@ const MiddleMovieGrid: React.FC<Props> = ({ movieData }) => {
 
 		<Container className="d-flex justify-content-center">
 			<Row className="d-flex justify-content-between align-items-center flex-row" >
-				<Col className='mx-3 d-flex justify-content-center'>
+				<Col className='runtime mx-3 d-flex justify-content-center'>
 
 					<p>Runtime:&nbsp;
 						<span className='hours'>{hours}</span>
@@ -33,7 +33,7 @@ const MiddleMovieGrid: React.FC<Props> = ({ movieData }) => {
 					</p>
 
 				</Col >
-				<Col className='mx-3 d-flex justify-content-center'>
+				<Col className='avg-vote mx-3 d-flex justify-content-center'>
 					<p>Avg vote:&nbsp;
 						<span className='popul'>{popul}</span>
 						<sup className='arity'>{arity}</sup>

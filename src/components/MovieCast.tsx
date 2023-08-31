@@ -10,7 +10,6 @@ type Props = {
 }
 
 const MovieCast: React.FC<Props> = ({ cast }) => {
-	const imgSize = 'w200'
 	const actorsWithPics = cast.filter(actor => actor.order < 9)
 	const actorsWithoutPics = cast.filter(actor => actor.order >= 9)
 

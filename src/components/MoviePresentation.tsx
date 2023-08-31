@@ -7,6 +7,7 @@ import InfoGrid from './InfoGrid'
 import UpperMovieGrid from './UpperMovieGrid'
 import MiddleMovieGrid from './MiddleMovieGrid'
 import MovieCast from './MovieCast'
+import MovieCrew from './MovieCrew'
 
 type Props = {
 	movieData: DetailedMovie
@@ -30,13 +31,17 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 			<MovieCast
 				cast={movieData.credits.cast}
 			/>
+
+			<MovieCrew
+				crew={movieData.credits.crew}
+			/>
+
 			<InfoGrid
 				movieData={movieData}
 			/>
 
 
 			{/* <Container> */}
-			{/* <p>{movieData.credits.crew.map()}</p> */}
 			{/* <p>{movieData.production_companies.map()}</p> */}
 			{/* </Container> */}
 
