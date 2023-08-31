@@ -31,8 +31,8 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 
 			<Row className='d-flex flex-row' style={
 				{
-					overflow: 'auto',
-					whiteSpace: 'nowrap',
+					// overflow: 'auto',
+					// whiteSpace: 'nowrap',
 				}
 			}>
 
@@ -47,20 +47,25 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 								<Card key={actor.id} className='mb-3' style={
 									{
 										height: '13rem',
-										width: '20rem',
+										width: '23rem',
 										display: 'flex',
 										flexDirection: 'row'
 									}}>
 									<Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + actor.profile_path} />
 									<Card.Body>
 										<Card.Title>{actor.name}</Card.Title>
-										<Card.Text >
-											<ul className="list-group list-group-flush">
+										<Card.Text style={{
+											fontWeight: 'lighter',
+										}}>
+											<ul className="list-group list-group-flush py-0">
 												<li className="list-group-item">
 													<strong>Character:</strong> {actor.character}
 												</li>
 												<li className="list-group-item">
 													<strong>Known for:</strong> {actor.known_for_department}
+												</li>
+												<li className="list-group-item">
+													<strong>Popularity:</strong> {actor.popularity}
 												</li>
 
 											</ul>
