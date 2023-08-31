@@ -8,7 +8,6 @@ type Props = {
 }
 
 const MovieCrew: React.FC<Props> = ({ crew }) => {
-	console.log('crew', crew)
 	return (
 		<>
 
@@ -26,7 +25,7 @@ const MovieCrew: React.FC<Props> = ({ crew }) => {
 					<tbody>
 						{crew && crew.map(crew => {
 							return (
-								<tr>
+								<tr key={crew.id}>
 									<td>{crew.name}</td>
 									<td>{crew.job}</td>
 									<td>{crew.known_for_department}</td>

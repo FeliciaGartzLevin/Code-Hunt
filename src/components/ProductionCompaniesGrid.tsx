@@ -23,7 +23,7 @@ const ProductionCompaniesGrid: React.FC<Props> = ({ production_companies }) => {
 							<Col className='p-2 d-flex justify-content-center'>
 
 								{company.logo_path ? (
-									<Image src={import.meta.env.VITE_IMG_URL + imgSize + company.logo_path} style={{
+									<Image key={company.id} src={import.meta.env.VITE_IMG_URL + imgSize + company.logo_path} style={{
 										height: '3rem',
 									}} />
 								) :

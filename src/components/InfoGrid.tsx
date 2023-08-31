@@ -11,7 +11,7 @@ type Props = {
 const InfoGrid: React.FC<Props> = ({ movieData }) => {
 
 	const spoken_lang = movieData.spoken_languages.map((lang, index: number) => (
-		<span>{lang.name}
+		<span key={lang.iso_639_1}>{lang.name}
 			{index === movieData.spoken_languages.length - 1 ? '' : ', '}
 		</span>
 	))

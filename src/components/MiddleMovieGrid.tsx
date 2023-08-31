@@ -12,10 +12,6 @@ const MiddleMovieGrid: React.FC<Props> = ({ movieData }) => {
 	const arity = String(movieData.vote_average).slice(String(movieData.vote_average).lastIndexOf('.'))
 	const popul = Math.floor(movieData.vote_average)
 
-	console.log('movieData.vote_average:', movieData.vote_average)
-	console.log('popul:', popul)
-	console.log('arity:', arity)
-
 	// counting runtime:
 	const runtime = Number(movieData.runtime)
 	const hours = Math.floor(runtime / 60)

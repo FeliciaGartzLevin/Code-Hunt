@@ -21,12 +21,12 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 				{/* Actors with pictures */}
 				{actorsWithPics && actorsWithPics.map(actor => {
 					return (
-						<Col className='d-flex justify-content-center' style={{
+						<Col key={actor.id} className='d-flex justify-content-center' style={{
 							display: 'inline-block',
 							float: 'none',
 						}}>
 							<Link to={'/actor/' + actor.id}>
-								<Card key={actor.id} className='mb-3 bg-dark text-white' style={
+								<Card className='mb-3 bg-dark text-white' style={
 									{
 										height: '13rem',
 										width: '23rem',
@@ -36,9 +36,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 									<Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + actor.profile_path} />
 									<Card.Body>
 										<Card.Title>{actor.name}</Card.Title>
-										<Card.Text style={{
-											fontWeight: 'lighter',
-										}}>
+										<Col>
 											<ListGroup variant='flush' className="py-0">
 												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
 													fontWeight: 'lighter',
@@ -57,7 +55,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 												</ListGroup.Item>
 
 											</ListGroup>
-										</Card.Text>
+										</Col>
 									</Card.Body>
 								</Card>
 							</Link>

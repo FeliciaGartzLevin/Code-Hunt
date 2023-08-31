@@ -12,6 +12,7 @@ type Props = {
 const MovieCard: React.FC<Props> = ({ movie }) => {
 	const year = new Date(movie.release_date)
 	const imgSize = 'w200'
+	const slicedDesciption = movie.overview.slice(0, 70) + '...'
 
 	return (
 		<Col className='d-flex justify-content-center mx-1 my-3'>
@@ -31,7 +32,7 @@ const MovieCard: React.FC<Props> = ({ movie }) => {
 								{movie.original_language.toUpperCase()}
 							</span>
 						</p>
-						{movie.overview.slice(0, 70) + '...'}
+						{slicedDesciption}
 					</div>
 					<Link
 						to={'/movie/' + movie.id}>

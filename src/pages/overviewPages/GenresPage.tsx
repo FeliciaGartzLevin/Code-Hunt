@@ -9,7 +9,6 @@ import Container from 'react-bootstrap/Container'
 import { MovieResponse } from '../../types/MovieTypes'
 import PageNavigation from '../../components/PageNavigation'
 
-
 const GenresPage = () => {
 	// const queryClient = new QueryClient()
 	const [searchParams, setSearchParams] = useSearchParams()
