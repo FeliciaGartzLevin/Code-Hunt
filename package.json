@@ -9,7 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "netlify deploy --prod",
+    "deploy": "netlify deploy --prod"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.33.0",
