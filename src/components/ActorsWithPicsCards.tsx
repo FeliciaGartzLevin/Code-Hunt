@@ -21,44 +21,47 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 				{/* Actors with pictures */}
 				{actorsWithPics && actorsWithPics.map(actor => {
 					return (
-						<Col key={actor.id} className='d-flex justify-content-center' style={{
-							display: 'inline-block',
-							float: 'none',
-						}}>
-							<Link to={'/actor/' + actor.id}>
-								<Card className='mb-3 bg-dark text-white' style={
-									{
+						<Col key={actor.id} className='d-flex justify-content-center'>
+							<Card className='mb-3 bg-dark text-white d-flex align-items-center' style={
+								{
+									height: '13rem',
+									width: '23rem',
+									display: 'flex',
+									flexDirection: 'row'
+								}}>
+								<Link to={'/actor/' + actor.id} >
+									{actor.profile_path && <Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + actor.profile_path} style={{
 										height: '13rem',
-										width: '23rem',
-										display: 'flex',
-										flexDirection: 'row'
-									}}>
-									<Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + actor.profile_path} />
-									<Card.Body>
-										<Card.Title>{actor.name}</Card.Title>
-										<Col>
-											<ListGroup variant='flush' className="py-0">
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Character:</strong> {actor.character}
-												</ListGroup.Item>
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Known for:</strong> {actor.known_for_department}
-												</ListGroup.Item>
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Popularity:</strong> {actor.popularity}
-												</ListGroup.Item>
+									}} />}
+								</Link>
 
-											</ListGroup>
-										</Col>
-									</Card.Body>
-								</Card>
-							</Link>
+								<Card.Body style={{
+									maxHeight: '13rem',
+									overflowY: 'scroll',
+								}}>
+									<Card.Title>{actor.name}</Card.Title>
+									<Col>
+										<ListGroup variant='flush' className="py-0">
+											<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+												fontWeight: 'lighter',
+											}}>
+												<strong>Character:</strong> {actor.character}
+											</ListGroup.Item>
+											<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+												fontWeight: 'lighter',
+											}}>
+												<strong>Known for:</strong> {actor.known_for_department}
+											</ListGroup.Item>
+											{/* 	<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+												fontWeight: 'lighter',
+											}}>
+												<strong>Popularity:</strong> {actor.popularity}
+											</ListGroup.Item> */}
+
+										</ListGroup>
+									</Col>
+								</Card.Body>
+							</Card>
 						</Col>
 					)
 				})}
