@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
+import { Movie } from '../types/MovieTypes'
 
 type Props = {
 	movie: Movie
