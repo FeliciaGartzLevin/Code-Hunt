@@ -11,7 +11,7 @@ import NotFound from './pages/overviewPages/NotFound'
 import MoviesPage from './pages/overviewPages/MoviesPage'
 import GenresPage from './pages/overviewPages/GenresPage'
 import APICredPage from './pages/overviewPages/APICredPage'
-import PersonPage from './pages/detailPages/PersonPage'
+import ActorPage from './pages/detailPages/ActorPage'
 import MoviePage from './pages/detailPages/MoviePage'
 import SeeMoviesPage from './pages/overviewPages/SeeMoviesPage'
 import HandleAllLoading from './components/HandleAllLoading'
@@ -33,7 +33,7 @@ const App = () => {
 					<Route path='/movies/:preferenceURL' element={<SeeMoviesPage />} />
 					<Route path='/movie/:movieId' element={<MoviePage />} />
 
-					<Route path='/actor/:actorId' element={<PersonPage />} />
+					<Route path='/actor/:actorId' element={<ActorPage />} />
 
 					<Route path='/genres' element={<GenresPage />} />
 
