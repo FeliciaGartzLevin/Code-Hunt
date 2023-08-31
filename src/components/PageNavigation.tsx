@@ -5,23 +5,24 @@ import Container from 'react-bootstrap/Container';
 type Props = {
 	currentGenreId: string,
 	currentPage: number,
-	total_pages: number,
 	toLastOrFirstPage: (page: number) => void
 	changeToPage: (page: number, currentGenreId: string) => void,
 }
 
-const PageNavigation: React.FC<Props> = ({ currentPage, total_pages, changeToPage, currentGenreId, toLastOrFirstPage }) => {
+const PageNavigation: React.FC<Props> = ({ currentPage, changeToPage, currentGenreId, toLastOrFirstPage }) => {
+	// the API allows max 500 pages
+	const lastPage = 500
+	const firstPage = 1
 	return (
 		<Container className='d-flex justify-content-center'>
-			<Pagination>
-				<Pagination.First disabled={currentPage === 1} onClick={() => toLastOrFirstPage(1)} />
-				<Pagination.Prev disabled={currentPage <= 1} onClick={() => changeToPage(-1, currentGenreId)} />
+			<Pagination >
+				<Pagination.First className='pagination-component' disabled={currentPage === firstPage} onClick={() => toLastOrFirstPage(1)} />
+				<Pagination.Prev disabled={currentPage <= firstPage} onClick={() => changeToPage(-1, currentGenreId)} />
 
 				<Pagination.Item className='active'>{currentPage}</Pagination.Item>
 
-
-				<Pagination.Next disabled={currentPage >= total_pages} onClick={() => changeToPage(+1, currentGenreId)} />
-				<Pagination.Last disabled={currentPage === total_pages} onClick={() => toLastOrFirstPage(total_pages)} />
+				<Pagination.Next disabled={currentPage >= lastPage} onClick={() => changeToPage(+1, currentGenreId)} />
+				<Pagination.Last disabled={currentPage === lastPage} onClick={() => toLastOrFirstPage(lastPage)} />
 			</Pagination>
 		</Container>
 	)

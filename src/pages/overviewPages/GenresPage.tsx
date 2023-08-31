@@ -90,7 +90,6 @@ const GenresPage = () => {
 					<PageNavigation
 						currentGenreId={currentGenreId}
 						currentPage={Number(currentPage)}
-						total_pages={moviesByGenreQuery.data.total_pages}
 						changeToPage={handlePagination}
 						toLastOrFirstPage={toLastOrFirstPage}
 					/>
