@@ -21,9 +21,11 @@ const SeeMoviesPage = () => {
 	}, [])
 
 	return (
-		<div id="MoviesPage" className="">
+		<div id="MoviesPage" className="d-flex align-items-center flex-column">
 
 			<h1 className='text-center text-md-start'>Movies</h1>
+
+			<p>Click and choose your preference.</p>
 
 			<FilterButtons
 				choice={(url: string) => setGetUrl(url)}
