@@ -52,11 +52,6 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 											}}>
 												<strong>Known for:</strong> {actor.known_for_department}
 											</ListGroup.Item>
-											{/* 	<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-												fontWeight: 'lighter',
-											}}>
-												<strong>Popularity:</strong> {actor.popularity}
-											</ListGroup.Item> */}
 
 										</ListGroup>
 									</Col>

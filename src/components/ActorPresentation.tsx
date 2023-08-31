@@ -17,12 +17,16 @@ const ActorPresentation: React.FC<Props> = ({ actorData }) => {
 				actorData={actorData}
 			/>
 
-			<ActorCasting
-				cast={actorData.credits.cast} />
+			{actorData.credits.cast.length > 0 &&
+				<ActorCasting
+					cast={actorData.credits.cast} />
+			}
 
-			<ActorCrew
-				crew={actorData.credits.crew}
-			/>
+			{actorData.credits.crew.length > 0 &&
+				<ActorCrew
+					crew={actorData.credits.crew}
+				/>
+			}
 		</>
 	)
 }
