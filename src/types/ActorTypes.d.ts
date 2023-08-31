@@ -13,8 +13,30 @@ export type ActorResponse = {
 	place_of_birth: string,
 	popularity: number,
 	profile_path: string,
-	credits: ActorCast[]
+	credits: ActorCast[],
+	crew: ActorCrew[]
+	id: number,
 
+}
+
+export type ActorCrew = {
+	adult: string,
+	backdrop_path: string,
+	genre_ids: number[],
+	id: number,
+	original_language: string,
+	original_title: string,
+	overview: string,
+	popularity: number,
+	poster_path: string,
+	release_date: string,
+	title: string,
+	video: string,
+	vote_average: number,
+	vote_count: number,
+	credit_id: string,
+	department: string,
+	job: string
 }
 
 export type ActorCast = {

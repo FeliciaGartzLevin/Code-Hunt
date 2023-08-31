@@ -22,7 +22,7 @@ const UpperActorGrid: React.FC<Props> = ({ actorData }) => {
 
 	return (
 		<div className='mb-3'>
-			<Container fluid className="d-flex align-items-center flex-direction-column">
+			<Container fluid className="d-flex align-items-center flex-direction-column mb-3">
 				<Row className="d-flex justify-content-center align-items-center" >
 					<Col xl={6} md={6} sm={12} className=' mb-3 mr-3 d-flex justify-content-center' >
 						{actorData.profile_path && (<Image src={import.meta.env.VITE_IMG_URL + imgSize + actorData.profile_path} />)}
@@ -41,7 +41,7 @@ const UpperActorGrid: React.FC<Props> = ({ actorData }) => {
 			</Container>
 			<Container>
 				<Row>
-					<h2>Biography:</h2>
+					<h2 className='h3'>Biography:</h2>
 					<Col className='scroll-bar-actors' style={{
 						height: '10rem',
 					}}>
