@@ -16,7 +16,7 @@ const UpperMovieGrid: React.FC<Props> = ({ movieData }) => {
 	const imgSize = 'w300'
 
 	return (
-		<Container fluid className="d-flex align-items-center flex-direction-column">
+		<Container fluid className="d-flex flex-direction-column">
 			<Row className="d-flex justify-content-center" >
 				<Col xl={4} md={6} sm={12} className=' mb-3 mr-3 d-flex justify-content-center' >
 					{movieData.poster_path && (<Image src={import.meta.env.VITE_IMG_URL + imgSize + movieData.poster_path} />)}

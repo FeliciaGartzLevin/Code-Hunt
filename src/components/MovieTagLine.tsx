@@ -6,15 +6,18 @@ type Props = {
 
 const MovieTagLine: React.FC<Props> = ({ tagline }) => {
 	return (
-		<div id='quote-container'>
-			<div className='start-quote'>
-				<span className='quotes'>&bdquo;</span>
-			</div>
+		<div className='d-flex justify-content-center justify-content-sm-start'>
 
-			<span className='italic m-0'>{tagline}</span>
+			<div id='quote-container' >
+				<div className='start-quote'>
+					<span className='quotes'>&bdquo;</span>
+				</div>
 
-			<div className='end-quote'>
-				<span className='quotes'>&bdquo;</span>
+				<span className='italic m-0'>{tagline}</span>
+
+				<div className='end-quote'>
+					<span className='quotes'>&bdquo;</span>
+				</div>
 			</div>
 		</div>
 	)
