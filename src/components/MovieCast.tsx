@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Cast } from '../types/MovieTypes'
 import { Link } from 'react-router-dom'
+import { ListGroup } from 'react-bootstrap'
 
 type Props = {
 	cast: Cast[]
@@ -44,7 +45,7 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 							float: 'none',
 						}}>
 							<Link to={'/actor/' + actor.id}>
-								<Card key={actor.id} className='mb-3' style={
+								<Card key={actor.id} className='mb-3 bg-dark text-white' style={
 									{
 										height: '13rem',
 										width: '23rem',
@@ -57,18 +58,24 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 										<Card.Text style={{
 											fontWeight: 'lighter',
 										}}>
-											<ul className="list-group list-group-flush py-0">
-												<li className="list-group-item">
+											<ListGroup variant='flush' className="py-0">
+												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+													fontWeight: 'lighter',
+												}}>
 													<strong>Character:</strong> {actor.character}
-												</li>
-												<li className="list-group-item">
+												</ListGroup.Item>
+												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+													fontWeight: 'lighter',
+												}}>
 													<strong>Known for:</strong> {actor.known_for_department}
-												</li>
-												<li className="list-group-item">
+												</ListGroup.Item>
+												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
+													fontWeight: 'lighter',
+												}}>
 													<strong>Popularity:</strong> {actor.popularity}
-												</li>
+												</ListGroup.Item>
 
-											</ul>
+											</ListGroup>
 										</Card.Text>
 									</Card.Body>
 								</Card>
