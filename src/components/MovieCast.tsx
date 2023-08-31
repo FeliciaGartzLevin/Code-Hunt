@@ -1,91 +1,52 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Image from 'react-bootstrap/Image'
+import Table from 'react-bootstrap/Table'
 import { Cast } from '../types/MovieTypes'
 import { Link } from 'react-router-dom'
-import { ListGroup } from 'react-bootstrap'
+import ActorsWithPicsCards from './ActorsWithPicsCards'
 
 type Props = {
 	cast: Cast[]
 }
 
-
-
-/* 					 {cast && cast.map(actor => {
-
-						return (
-							<p key={actor.id}>{actor.name}</p>
-						)
-					})}  */
-
 const MovieCast: React.FC<Props> = ({ cast }) => {
 	const imgSize = 'w200'
-	const actorsWithPics = cast.filter(actor => actor.order < 10)
-	// console.log('actorsWithPics:', actorsWithPics)
-	// console.log('cast:', cast)
+	const actorsWithPics = cast.filter(actor => actor.order < 9)
+	const actorsWithoutPics = cast.filter(actor => actor.order >= 9)
 
 	return (
-		<Container fluid>
+		<>
+			<h3 className=''>Cast</h3>
+			<ActorsWithPicsCards
+				actorsWithPics={actorsWithPics}
+			/>
 
-			<Row className='d-flex flex-row' style={
-				{
-					// overflow: 'auto',
-					// whiteSpace: 'nowrap',
-				}
-			}>
+			{/* Actors wihout pics table: */}
+			<Container fluid className='scroll-bar-actors mb-3'>
+				<Table variant='dark' striped bordered hover>
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Character</th>
+							<th>Popularity</th>
+						</tr>
+					</thead>
+					<tbody>
+						{actorsWithoutPics && actorsWithoutPics.map(actor => {
+							return (
+								<tr>
+									<td><Link id='actor-links' to={'/actor/' + actor.id}>{actor.name}</Link></td>
+									<td>{actor.character}</td>
+									<td>{actor.popularity}</td>
+								</tr>
+							)
+						})}
+					</tbody>
+				</Table>
+			</Container>
 
+		</>
 
-				{actorsWithPics && actorsWithPics.map(actor => {
-					return (
-						<Col style={{
-							display: 'inline-block',
-							float: 'none',
-						}}>
-							<Link to={'/actor/' + actor.id}>
-								<Card key={actor.id} className='mb-3 bg-dark text-white' style={
-									{
-										height: '13rem',
-										width: '23rem',
-										display: 'flex',
-										flexDirection: 'row'
-									}}>
-									<Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + actor.profile_path} />
-									<Card.Body>
-										<Card.Title>{actor.name}</Card.Title>
-										<Card.Text style={{
-											fontWeight: 'lighter',
-										}}>
-											<ListGroup variant='flush' className="py-0">
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Character:</strong> {actor.character}
-												</ListGroup.Item>
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Known for:</strong> {actor.known_for_department}
-												</ListGroup.Item>
-												<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
-													fontWeight: 'lighter',
-												}}>
-													<strong>Popularity:</strong> {actor.popularity}
-												</ListGroup.Item>
-
-											</ListGroup>
-										</Card.Text>
-									</Card.Body>
-								</Card>
-							</Link>
-						</Col>
-					)
-				})}
-			</Row>
-
-		</Container >
 	)
 }
 

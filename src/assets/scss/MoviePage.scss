@@ -1,3 +1,27 @@
 .info-bg {
 	background-color: beige;
 }
+
+.scroll-bar-actors {
+
+	height: 20rem;
+	overflow: scroll;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+
+}
+
+.scroll-bar-actors::-webkit-scrollbar {
+	display: none;
+}
+
+
+#actor-links {
+	color: bisque;
+
+	&:hover {
+		color: $link-color;
+	}
+}
