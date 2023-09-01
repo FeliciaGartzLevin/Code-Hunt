@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getGenreList, getMoviesByPreference } from '../../services/TMDB-API'
-import GenreSelect from '../../components/GenreSelect'
+import GenreSelect from '../../components/GenrePage/GenreSelect'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import MovieGrid from '../../components/Moviegrid'

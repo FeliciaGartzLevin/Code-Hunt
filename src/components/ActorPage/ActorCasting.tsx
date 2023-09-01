@@ -2,8 +2,8 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
-import { ActorCast } from '../types/ActorTypes'
-import MoviesWithPicsCards from '../components/MoviesWithPicsCards'
+import { ActorCast } from '../../types/ActorTypes'
+import MoviesWithPicsCards from './MoviesWithPicsCards'
 
 type Props = {
 	cast: ActorCast[]

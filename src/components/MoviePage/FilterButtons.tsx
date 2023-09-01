@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button'
 import Stack from 'react-bootstrap/Stack'
 import React from 'react'
-import { FilterButton } from '../types/FilterBtns'
+import { FilterButton } from '../../types/FilterBtns'
 import { useNavigate } from 'react-router-dom'
-import FilterButtonsArray from '../data/FilterBtnArray'
+import FilterButtonsArray from '../../data/FilterBtnArray'
 
 
 const buttons: FilterButton[] = FilterButtonsArray

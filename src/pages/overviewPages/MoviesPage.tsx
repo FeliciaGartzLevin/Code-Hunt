@@ -1,4 +1,4 @@
-import FilterButtons from '../../components/FilterButtons';
+import FilterButtons from '../../components/MoviePage/FilterButtons';
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';

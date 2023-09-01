@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
-import { Cast } from '../types/MovieTypes'
+import { Cast } from '../../types/MovieTypes'
 import { Link } from 'react-router-dom'
 import ActorsWithPicsCards from './ActorsWithPicsCards'
 

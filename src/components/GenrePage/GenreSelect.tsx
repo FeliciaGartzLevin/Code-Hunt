@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import { Genre } from '../types/GenreTypes'
+import { Genre } from '../../types/GenreTypes'
 
 
 type Props = {

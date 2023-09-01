@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
 import { ListGroup } from 'react-bootstrap'
-import { ActorCast } from '../types/ActorTypes'
+import { ActorCast } from '../../types/ActorTypes'
 
 type Props = {
 	actorMovies: ActorCast[]
