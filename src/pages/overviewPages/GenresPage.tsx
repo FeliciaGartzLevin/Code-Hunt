@@ -29,10 +29,10 @@ const GenresPage = () => {
 
 	// A reuse function to find the right genre from the url genre in
 	// order to render the genre name on top of the movie results
-	const findGenre = (genreN: string) => {
+	const findGenre = (genreId: string) => {
 		if (!genreListQuery.data) return
 		if (!genreListQuery.data.genres && !currentGenreId) return
-		setGenre(genreListQuery.data.genres.find(genre => genre.name === genreN) ?? null)
+		setGenre(genreListQuery.data.genres.find(genre => genre.id === Number(genreId)) ?? null)
 	}
 
 	// handling the click on 'confirm' after choosing a genre from the select-form
@@ -84,14 +84,10 @@ const GenresPage = () => {
 			}
 
 			{!moviesByGenreQuery.isError && moviesByGenreQuery.data && (
-
 				<>
-
-					{genre &&
-						<Container>
-							<h2 className='m-4 h4'>{genre.name}</h2>
-						</Container>
-					}
+					<Container>
+						<h2 className='m-4 h4'>{genre ? genre.name : 'All'}</h2>
+					</Container>
 
 					{currentPage &&
 						moviesByGenreQuery.data.total_pages &&
