@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
-import { Crew } from '../types/MovieTypes'
+import { Crew } from '../../types/MovieTypes'
 
 type Props = {
 	crew: Crew[]

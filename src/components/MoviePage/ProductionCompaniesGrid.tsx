@@ -3,7 +3,7 @@ import Image from 'react-bootstrap/Image'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import React from 'react'
-import { ProductionCompany } from '../types/MovieTypes'
+import { ProductionCompany } from '../../types/MovieTypes'
 
 type Props = {
 	production_companies: ProductionCompany[]

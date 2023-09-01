@@ -1,5 +1,5 @@
 import React from 'react'
-import { DetailedMovie } from '../types/MovieTypes'
+import { DetailedMovie } from '../../types/MovieTypes'
 import InfoGrid from './InfoGrid'
 import UpperMovieGrid from './UpperMovieGrid'
 import MiddleMovieGrid from './MiddleMovieGrid'

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import MovieGrid from '../../components/Moviegrid';
+import MovieGrid from '../../components/MoviePage/Moviegrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/MoviePage/FilterButtons';
 import Alert from 'react-bootstrap/Alert';
