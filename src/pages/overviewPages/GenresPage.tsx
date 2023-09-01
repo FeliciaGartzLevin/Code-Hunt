@@ -1,11 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { getGenreList, getMoviesByPreference } from '../../services/TMDB-API'
 import GenreSelect from '../../components/GenrePage/GenreSelect'
-import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import MovieGrid from '../../components/MoviePage/Moviegrid'
-import { Genre } from '../../types/GenreTypes'
-import Container from 'react-bootstrap/Container'
 import { MovieResponse } from '../../types/MovieTypes'
 import PageNavigation from '../../components/PageNavigation'
 import HandleAllErrors from '../../components/HandleAllErrors'
@@ -14,7 +11,6 @@ const GenresPage = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const currentGenreId = searchParams.get("with_genres") ?? ''
 	const currentPage = searchParams.get("page") ?? 1
-	const [genre, setGenre] = useState<Genre | null>(null)
 	const url = window.location.search
 
 	const genreListQuery = useQuery(
@@ -27,29 +23,12 @@ const GenresPage = () => {
 		() => getMoviesByPreference<MovieResponse>(import.meta.env.VITE_MOVIE_BY_GENRE_URL + url),
 	)
 
-	// A reuse function to find the right genre from the url genre in
-	// order to render the genre name on top of the movie results
-	const findGenre = (genreId: string) => {
-		if (!genreListQuery.data) return
-		if (!genreListQuery.data.genres && !currentGenreId) return
-		setGenre(genreListQuery.data.genres.find(genre => genre.id === Number(genreId)) ?? null)
-	}
-
 	// handling the click on 'confirm' after choosing a genre from the select-form
 	const handleChoice = (genreId: string) => {
-		findGenre(genreId)
 		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 	}
 
-	// finding current genre when moviesByGenreQuery is ready to be used in .find()
-	useEffect(() => {
-		findGenre(currentGenreId)
-	}, [moviesByGenreQuery.isSuccess])
-
-	/**
-	 * Functions for handling page switching
-	 *
-	 */
+	// Functions for handling page switching
 	const handlePagination = (directionNumber: number, currentGenreId: string) => {
 		const pageNum = Number(currentPage) + directionNumber
 		setSearchParams({ page: String(pageNum), with_genres: currentGenreId })
@@ -59,10 +38,6 @@ const GenresPage = () => {
 		setSearchParams({ page: String(page), with_genres: currentGenreId })
 	}
 
-	/**
-	 * The JSX returned:
-	 */
-
 	return (
 		<div id="GenresPage">
 			<h1 className='text-center text-md-start'>Find movies by genre</h1>
@@ -70,7 +45,7 @@ const GenresPage = () => {
 
 			{!genreListQuery.isError && genreListQuery.data &&
 				<GenreSelect
-					genreIsLoading={moviesByGenreQuery.isLoading}
+					currentGenreId={currentGenreId}
 					onChoice={handleChoice}
 					genreArray={genreListQuery.data?.genres}
 				/>
@@ -85,10 +60,6 @@ const GenresPage = () => {
 
 			{!moviesByGenreQuery.isError && moviesByGenreQuery.data && (
 				<>
-					<Container>
-						<h2 className='m-4 h4'>{genre ? genre.name : 'All'}</h2>
-					</Container>
-
 					{currentPage &&
 						moviesByGenreQuery.data.total_pages &&
 						currentGenreId &&
