@@ -33,9 +33,9 @@ const UpperMovieGrid: React.FC<Props> = ({ movieData }) => {
 						{movieData.original_language.toUpperCase()}
 					</span>
 					</p>
-					<p>Genres:&nbsp;    {/* just a space */}
+					<p >Genres:&nbsp;
 						{movieData.genres.map((genre, index: number) => (
-							<Link key={genre.id} to={'/genres?page=1&sort_by=popularity.desc&with_genres=' + String(genre.id)}>
+							<Link style={{ zIndex: 1000 }} key={genre.id} to={'/genres?page=1&sort_by=popularity.desc&with_genres=' + String(genre.id)}>
 								<span>{genre.name}
 									{index === movieData.genres.length - 1 ? '' : ', '}
 								</span>

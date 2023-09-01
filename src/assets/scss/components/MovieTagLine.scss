@@ -1,6 +1,7 @@
 @import "../styles.scss";
 
 #quote-container {
+	z-index: 1000;
 	position: relative;
 	display: inline-block;
 	padding: 4.2rem;

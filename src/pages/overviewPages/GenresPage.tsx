@@ -11,7 +11,6 @@ import PageNavigation from '../../components/PageNavigation'
 import HandleAllErrors from '../../components/HandleAllErrors'
 
 const GenresPage = () => {
-	// const queryClient = new QueryClient()
 	const [searchParams, setSearchParams] = useSearchParams()
 	const currentGenreId = searchParams.get("with_genres") ?? ''
 	const currentPage = searchParams.get("page") ?? 1
@@ -19,33 +18,28 @@ const GenresPage = () => {
 	const url = window.location.search
 
 	const genreListQuery = useQuery(
-		["genre-list", { currentGenreId }, { currentPage }],
+		["genre-list"],
 		getGenreList,
 	)
 
 	const moviesByGenreQuery = useQuery(
-		["movies-by-genre"],
+		["movies-by-genre", { currentGenreId }, { currentPage }],
 		() => getMoviesByPreference<MovieResponse>(import.meta.env.VITE_MOVIE_BY_GENRE_URL + url),
 	)
 
-	// A reusing function to find the right genre from the url genre in
+	// A reuse function to find the right genre from the url genre in
 	// order to render the genre name on top of the movie results
-	const findGenre = (id: string) => {
+	const findGenre = (genreN: string) => {
 		if (!genreListQuery.data) return
 		if (!genreListQuery.data.genres && !currentGenreId) return
-		setGenre(genreListQuery.data.genres.find(genre => genre.id === Number(id)) ?? null)
+		setGenre(genreListQuery.data.genres.find(genre => genre.name === genreN) ?? null)
 	}
 
 	// handling the click on 'confirm' after choosing a genre from the select-form
 	const handleChoice = (genreId: string) => {
-		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 		findGenre(genreId)
+		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 	}
-
-	// refetching with new parameters when url is changing + finding genre name
-	useEffect(() => {
-		moviesByGenreQuery.refetch()
-	}, [url])
 
 	// finding current genre when moviesByGenreQuery is ready to be used in .find()
 	useEffect(() => {
@@ -58,12 +52,11 @@ const GenresPage = () => {
 	 */
 	const handlePagination = (directionNumber: number, currentGenreId: string) => {
 		const pageNum = Number(currentPage) + directionNumber
-		setSearchParams({ page: String(pageNum), sort_by: 'popularity.desc', with_genres: currentGenreId })
+		setSearchParams({ page: String(pageNum), with_genres: currentGenreId })
 	}
 
 	const toLastOrFirstPage = (page: number) => {
-		setSearchParams({ page: String(page), sort_by: 'popularity.desc', with_genres: currentGenreId })
-
+		setSearchParams({ page: String(page), with_genres: currentGenreId })
 	}
 
 	/**
