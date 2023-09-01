@@ -87,7 +87,7 @@ Besökaren ska kunna välja om hen vill se populära filmer för dagen eller fö
 
 ## Instruktioner
 Acceptera inbjudan på GitHub Classroom:
-https://classroom.github.com/a/3xRw79B0
+
 
 Klona ner ditt repo, gå in i mappen, kör npm create vite@latest . -- --template react-ts (observera “.” för annars får ni en undermapp i ert repo och huvudvärk när ni ska deploya appen!) och installera nödvändiga paket som axios, bootstrap, react-bootstrap, @tanstack/react-query, react-router-dom och sass.
 
