@@ -17,11 +17,12 @@ const HomePage = () => {
 						In this project, I retrieve data from TMDB's API using Tanstack Query. Other technologies used in addition to it include Typescript, React, React-Bootstrap, React Router and SCSS.
 					</p>
 
-
-					<Link
-						to={'/movies/'}>
-						<Button variant="secondary">See movies</Button>
-					</Link>
+					<Col className='d-flex justify-content-center justify-content-md-start'>
+						<Link
+							to={'/movies/'}>
+							<Button variant="secondary">See movies</Button>
+						</Link>
+					</Col>
 				</Col>
 			</Row>
 

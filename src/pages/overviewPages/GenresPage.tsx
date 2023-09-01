@@ -38,7 +38,6 @@ const GenresPage = () => {
 	// handling the click on 'confirm' after choosing a genre from the select-form
 	const handleChoice = (genreId: string) => {
 		findGenre(genreId)
-
 		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 	}
 
@@ -53,11 +52,11 @@ const GenresPage = () => {
 	 */
 	const handlePagination = (directionNumber: number, currentGenreId: string) => {
 		const pageNum = Number(currentPage) + directionNumber
-		setSearchParams({ page: String(pageNum)/* , sort_by: 'popularity.desc'*/, with_genres: currentGenreId })
+		setSearchParams({ page: String(pageNum), with_genres: currentGenreId })
 	}
 
 	const toLastOrFirstPage = (page: number) => {
-		setSearchParams({ page: String(page)/* , sort_by: 'popularity.desc'*/, with_genres: currentGenreId })
+		setSearchParams({ page: String(page), with_genres: currentGenreId })
 	}
 
 	/**
