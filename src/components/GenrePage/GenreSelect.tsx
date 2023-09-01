@@ -28,10 +28,10 @@ const GenreSelect: React.FC<Props> = ({ genreArray, onChoice, genreIsLoading }) 
 				<Form.Label htmlFor='select' title="label for the select" aria-label="label for the select" className='small label'>Choose genre</Form.Label>
 				<Form.Group className='input-group m-auto' aria-labelledby='select'>
 					<Form.Select id='select' name='select' onChange={e => setChosenGenre(e.target.value)} title="select" aria-label="Choose a genre">
-						<option key={'choose-genre'} value={'choose'}>Genre</option>
+						<option key={'choose-genre'} >Genre</option>
 
 						{genreArray.length > 0 && genreArray.map(genre => {
-							return <option key={genre.id} value={genre.name}>{genre.name}</option>
+							return <option key={genre.id} value={genre.id}>{genre.name}</option>
 						})}
 
 					</Form.Select>

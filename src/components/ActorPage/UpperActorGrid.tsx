@@ -12,6 +12,8 @@ type Props = {
 
 const UpperActorGrid: React.FC<Props> = ({ actorData }) => {
 	const imgSize = 'w300'
+	const colSizingText = actorData.profile_path ? 6 : 12
+	const colSizingImg = actorData.profile_path ? 6 : 0
 
 	const getGender = (gender: number) => {
 		if (gender === 1) return 'Female'
@@ -24,14 +26,14 @@ const UpperActorGrid: React.FC<Props> = ({ actorData }) => {
 		<div className='mb-3'>
 			<Container fluid className="d-flex align-items-center flex-direction-column mb-3">
 				<Row className="d-flex justify-content-center align-items-center" >
-					<Col xl={6} md={6} sm={12} className=' mb-3 mr-3 d-flex justify-content-center' >
+					<Col xl={colSizingImg} md={colSizingImg} sm={12} className=' mb-3 mr-3 d-flex justify-content-center' >
 						{actorData.profile_path && (<Image src={import.meta.env.VITE_IMG_URL + imgSize + actorData.profile_path} />)}
 					</Col>
-					<Col xl={6} md={6} sm={12}>
+					<Col xl={colSizingText} md={colSizingText} sm={12}>
 						{actorData.name && <h1>{actorData.name}</h1>}
 						{actorData.birthday && <p className='mb-0'><strong>Birthday:</strong> {actorData.birthday}</p>}
 						{actorData.deathday && <p className='mb-0'><strong>Deathday:</strong> {actorData.deathday}</p>}
-						{actorData.gender && <p className='mb-0'><strong>Gender:</strong> {getGender(actorData.gender)}</p>}
+						<p className='mb-0'><strong>Gender:</strong> {getGender(actorData.gender)}</p>
 						{actorData.place_of_birth && <p className='mb-0'><strong>Place of birth:</strong> {actorData.place_of_birth}</p>}
 						{actorData.known_for_department && <p className='mb-0'><strong>Known for department:</strong> {actorData.known_for_department}</p>}
 						{actorData.popularity && <p className='mb-0'><strong>Popularity:</strong> {actorData.popularity}</p>}
