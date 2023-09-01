@@ -13,9 +13,6 @@ type Props = {
 
 const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 
-	console.log('movieData.credits.cast.length:', movieData.credits.cast.length)
-	console.log('movieData.credits.crew.length:', movieData.credits.crew.length)
-
 	return (
 		<>
 			<UpperMovieGrid

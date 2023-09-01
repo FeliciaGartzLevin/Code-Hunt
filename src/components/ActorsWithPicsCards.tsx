@@ -14,12 +14,9 @@ type Props = {
 const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 	const imgSize = 'w200'
 	return (
-		<Container fluid className='mb-3 actor-cards-container' style={{
-			// maxHeight: '40rem',
-			// borderBottom: ,
-		}}>
+		<Container fluid className='mb-3 actor-cards-container'>
 
-			<Row className='d-flex flex-row actors-card-body-scroll side-scroll'>
+			<Row className='d-flex flex-row actors-card-body-scroll side-scroll justify-content-lg-start'>
 
 				{/* Actors with pictures */}
 				{actorsWithPics && actorsWithPics.map(actor => {
@@ -42,7 +39,10 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 									maxHeight: '13rem',
 									overflowY: 'scroll',
 								}}>
-									<Card.Title>{actor.name}</Card.Title>
+									<Link id='actor-card-links' to={'/actor/' + actor.id} >
+										<Card.Title>{actor.name}</Card.Title>
+									</Link>
+
 									<Col>
 										<ListGroup variant='flush' className="py-0">
 											<ListGroup.Item variant='dark' className='bg-dark text-white' style={{
