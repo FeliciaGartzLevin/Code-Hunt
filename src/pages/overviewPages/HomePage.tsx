@@ -7,8 +7,8 @@ const HomePage = () => {
 	return (
 		<div id='HomePage' className='all-pages'>
 			<Row className='d-flex justify-content-center'>
-				<Col xl={6}>
-					<h1>Welcome to Code Hunt!</h1>
+				<Col xl={6} md={8}>
+					<h1>Welcome to the Code Hunt!</h1>
 					<p>
 						Code Hunt is a school project in the continuation course in Javascript during my second year of the&nbsp;
 						<Link to={'https://medieinstitutet.se/utbildningar/front-end-developer/'}>
