@@ -2,13 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import MovieGrid from '../../components/MoviePage/Moviegrid';
 import { getMoviesByPreference } from '../../services/TMDB-API';
 import FilterButtons from '../../components/MoviePage/FilterButtons';
-import Alert from 'react-bootstrap/Alert';
-
-import { Button } from 'react-bootstrap';
 import { MovieResponse } from '../../types/MovieTypes';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import FilterButtonsArray from '../../data/FilterBtnArray';
+import HandleAllErrors from '../../components/HandleAllErrors';
 
 const SeeMoviesPage = () => {
 	const { preferenceURL } = useParams()
@@ -29,20 +27,10 @@ const SeeMoviesPage = () => {
 			<h1 className='text-center text-md-start'>Movies</h1>
 
 			{queryMovies.isError &&
-				<Alert variant='danger'>
-					Something went wrong.
-					<div className='mt-2'>
-						<Button
-							variant='secondary'
-							onClick={() => queryMovies.refetch()}
-						>
-							Try again
-						</Button>
-					</div>
-				</Alert>
+				<HandleAllErrors />
 			}
 
-			{!queryMovies.isError &&
+			{!queryMovies.isError && queryMovies.data &&
 				<FilterButtons
 					choice={(url: string) => setGetUrl(url)}
 					currentUrl={preferenceURL}

@@ -8,6 +8,7 @@ import { Genre } from '../../types/GenreTypes'
 import Container from 'react-bootstrap/Container'
 import { MovieResponse } from '../../types/MovieTypes'
 import PageNavigation from '../../components/PageNavigation'
+import HandleAllErrors from '../../components/HandleAllErrors'
 
 const GenresPage = () => {
 	// const queryClient = new QueryClient()
@@ -51,7 +52,10 @@ const GenresPage = () => {
 		findGenre(currentGenreId)
 	}, [moviesByGenreQuery.isSuccess])
 
-	// functions for handling page switching
+	/**
+	 * Functions for handling page switching
+	 *
+	 */
 	const handlePagination = (directionNumber: number, currentGenreId: string) => {
 		const pageNum = Number(currentPage) + directionNumber
 		setSearchParams({ page: String(pageNum), sort_by: 'popularity.desc', with_genres: currentGenreId })
@@ -62,43 +66,61 @@ const GenresPage = () => {
 
 	}
 
+	/**
+	 * The JSX returned:
+	 */
+
 	return (
 		<div id="GenresPage">
 			<h1 className='text-center text-md-start'>Find movies by genre</h1>
 			<p className='text-center text-md-start'>Please select a genre below and we'll show a list of the movies by that genre</p>
 
-			{genreListQuery.data &&
+			{!genreListQuery.isError && genreListQuery.data &&
 				<GenreSelect
 					genreIsLoading={moviesByGenreQuery.isLoading}
 					onChoice={handleChoice}
 					genreArray={genreListQuery.data?.genres}
 				/>
 			}
-			{genre &&
-				<Container>
-					<h2 className='m-4 h4'>{genre.name}</h2>
-				</Container>
+
+			{moviesByGenreQuery.isError &&
+				<HandleAllErrors />
+			}
+			{genreListQuery.isError &&
+				<HandleAllErrors />
 			}
 
-			{currentPage &&
-				moviesByGenreQuery.data &&
-				moviesByGenreQuery.data.total_pages &&
-				currentGenreId &&
-				(
-					<PageNavigation
-						currentGenreId={currentGenreId}
-						currentPage={Number(currentPage)}
-						changeToPage={handlePagination}
-						toLastOrFirstPage={toLastOrFirstPage}
-					/>
-				)}
+			{!moviesByGenreQuery.isError && moviesByGenreQuery.data && (
 
-			{!moviesByGenreQuery.isStale && moviesByGenreQuery.data && moviesByGenreQuery.data.results.length > 0 &&
 				<>
-					<MovieGrid
-						movieArray={moviesByGenreQuery.data.results}
-					/>
+
+					{genre &&
+						<Container>
+							<h2 className='m-4 h4'>{genre.name}</h2>
+						</Container>
+					}
+
+					{currentPage &&
+						moviesByGenreQuery.data.total_pages &&
+						currentGenreId &&
+						(
+							<PageNavigation
+								currentGenreId={currentGenreId}
+								currentPage={Number(currentPage)}
+								changeToPage={handlePagination}
+								toLastOrFirstPage={toLastOrFirstPage}
+							/>
+						)}
+
+					{!moviesByGenreQuery.isStale && moviesByGenreQuery.data.results.length > 0 &&
+						<>
+							<MovieGrid
+								movieArray={moviesByGenreQuery.data.results}
+							/>
+						</>
+					}
 				</>
+			)
 			}
 		</div>
 	)
