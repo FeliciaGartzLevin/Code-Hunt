@@ -22,6 +22,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorMovies }) => {
 				{/* Actors with pictures */}
 				{actorMovies && actorMovies.map(movie => {
 					const releaseYear = new Date(movie.release_date).getFullYear()
+					console.log('movie.id:', movie.id)
 					return (
 						<Col key={movie.id} className='d-flex justify-content-center'>
 							<Card className='mb-3 bg-dark text-white d-flex align-items-center' style={
@@ -31,7 +32,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorMovies }) => {
 									display: 'flex',
 									flexDirection: 'row'
 								}}>
-								<Link to={'/actor/' + movie.id} >
+								<Link to={'/movie/' + movie.id} >
 									{movie.poster_path && <Card.Img variant="row" src={import.meta.env.VITE_IMG_URL + imgSize + movie.poster_path} style={{
 										height: '13rem',
 									}} />}
@@ -41,7 +42,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorMovies }) => {
 									maxHeight: '13rem',
 									overflowY: 'scroll',
 								}}>
-									<Link id='actor-card-links' to={'/actor/' + movie.id} >
+									<Link id='actor-card-links' to={'/movie/' + movie.id} >
 										<Card.Title>{movie.title}</Card.Title>
 									</Link>
 
