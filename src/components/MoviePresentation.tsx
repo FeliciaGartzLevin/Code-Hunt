@@ -23,24 +23,21 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 				movieData={movieData}
 			/>
 
-			{/* när jag visar actors till en movie: ta från cast de med 10-15 högst
-			popularity och visa deras bilder. Övrig cast kan jag rendera ut i en scrolllista*/}
-
-			<MovieCast
+			{movieData.credits.cast.length > 0 && <MovieCast
 				cast={movieData.credits.cast}
-			/>
+			/>}
 
-			<MovieCrew
+			{movieData.credits.crew.length > 0 && <MovieCrew
 				crew={movieData.credits.crew}
-			/>
+			/>}
 
 			<InfoGrid
 				movieData={movieData}
 			/>
 
-			<ProductionCompaniesGrid
+			{movieData.production_companies.length > 0 && <ProductionCompaniesGrid
 				production_companies={movieData.production_companies}
-			/>
+			/>}
 
 
 		</>

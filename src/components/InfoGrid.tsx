@@ -22,45 +22,51 @@ const InfoGrid: React.FC<Props> = ({ movieData }) => {
 
 			<Container fluid className="info-grid d-flex align-items-center flex-direction-column">
 				<Row className="d-flex justify-content-start">
-					<GriddedMovieInfo
+					{movieData.budget && <GriddedMovieInfo
 					>
 						<span><strong>Budget: </strong></span>
 						<span>${movieData.budget.toLocaleString()}</span>
 					</GriddedMovieInfo>
+					}
 
-					<GriddedMovieInfo>
+					{movieData.homepage && <GriddedMovieInfo>
 						<a href={movieData.homepage}>Homepage</a>
 					</GriddedMovieInfo>
+					}
 
-					<GriddedMovieInfo
-						title='Original title'>
-						'{movieData.original_title}'
-					</GriddedMovieInfo>
-
-					<GriddedMovieInfo
-						title='Spoken languages'>
-						{spoken_lang}
-					</GriddedMovieInfo>
-
-					<GriddedMovieInfo
+					{movieData.original_title &&
+						<GriddedMovieInfo
+							title='Original title'>
+							'{movieData.original_title}'
+						</GriddedMovieInfo>
+					}
+					{spoken_lang &&
+						<GriddedMovieInfo
+							title='Spoken languages'>
+							{spoken_lang}
+						</GriddedMovieInfo>
+					}
+					{movieData.revenue && <GriddedMovieInfo
 						title='Revenue'>
 						${movieData.revenue.toLocaleString()}
 					</GriddedMovieInfo>
+					}
 
-					<GriddedMovieInfo
+					{movieData.status && <GriddedMovieInfo
 						title='Status'>
 						{movieData.status}
 					</GriddedMovieInfo>
-
-					<GriddedMovieInfo
+					}
+					{movieData.popularity && <GriddedMovieInfo
 						title='Average vote'>
 						{movieData.popularity}
 					</GriddedMovieInfo>
-
-					<GriddedMovieInfo
+					}
+					{movieData.vote_count && <GriddedMovieInfo
 						title='Vote count'>
 						{movieData.vote_count} votes
 					</GriddedMovieInfo>
+					}
 				</Row>
 			</Container >
 		</div>
