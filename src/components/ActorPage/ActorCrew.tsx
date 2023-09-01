@@ -2,7 +2,7 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
 import { Link } from 'react-router-dom'
-import { ActorCrew } from '../types/ActorTypes'
+import { ActorCrew } from '../../types/ActorTypes'
 
 type Props = {
 	crew: ActorCrew[]

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActorResponse } from '../types/ActorTypes'
+import { ActorResponse } from '../../types/ActorTypes'
 import UpperActorGrid from './UpperActorGrid'
 import ActorCasting from './ActorCasting'
 import ActorCrew from './ActorCrew'
