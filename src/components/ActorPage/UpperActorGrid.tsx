@@ -43,11 +43,11 @@ const UpperActorGrid: React.FC<Props> = ({ actorData }) => {
 			</Container>
 			{actorData.biography && (
 				<Container>
-					<Row>
+					<Row className='mb-3'>
 
 						<h2 className='h3'>Biography:</h2>
 						<Col className='scroll-bar-actors' style={{
-							height: '10rem',
+							maxHeight: '10rem',
 						}}>
 							<p className='mb-0'>{actorData.biography}</p>
 						</Col>
