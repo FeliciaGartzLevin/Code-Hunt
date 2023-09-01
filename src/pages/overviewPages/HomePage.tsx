@@ -14,7 +14,8 @@ const HomePage = () => {
 						<Link to={'https://medieinstitutet.se/utbildningar/front-end-developer/'}>
 							Front End Developer Higher Vocational Education (HVE) program at Medieinstitutet
 						</Link>.&nbsp;
-						In this project, I retrieve data from TMDB's API using Tanstack Query. Other technologies used in addition to it include Typescript, React, React-Bootstrap, React Router and SCSS.			</p>
+						In this project, I retrieve data from TMDB's API using Tanstack Query. Other technologies used in addition to it include Typescript, React, React-Bootstrap, React Router and SCSS.
+					</p>
 
 
 					<Link

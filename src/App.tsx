@@ -35,7 +35,7 @@ const App = () => {
 
 					<Route path='/actor/:actorId' element={<ActorPage />} />
 
-					<Route path='/genres' element={<GenresPage />} />
+					<Route path='/genres/:genreName' element={<GenresPage />} />
 
 					<Route path='/api' element={<APICredPage />} />
 
