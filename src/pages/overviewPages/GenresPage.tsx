@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getGenreList, getMoviesByPreference } from '../../services/TMDB-API'
 import GenreSelect from '../../components/GenrePage/GenreSelect'
 import { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import MovieGrid from '../../components/MoviePage/Moviegrid'
 import { Genre } from '../../types/GenreTypes'
 import Container from 'react-bootstrap/Container'
@@ -16,7 +16,9 @@ const GenresPage = () => {
 	const currentGenreId = searchParams.get("with_genres") ?? ''
 	const currentPage = searchParams.get("page") ?? 1
 	const [genre, setGenre] = useState<Genre | null>(null)
+	const { genreName } = useParams()
 	const url = window.location.search
+	console.log('genreName:', genreName)
 
 	const genreListQuery = useQuery(
 		["genre-list", { currentGenreId }, { currentPage }],
@@ -38,6 +40,8 @@ const GenresPage = () => {
 
 	// handling the click on 'confirm' after choosing a genre from the select-form
 	const handleChoice = (genreId: string) => {
+		// console.log('value of select:', select.value)
+
 		setSearchParams({ page: String(1), sort_by: 'popularity.desc', with_genres: genreId })
 		findGenre(genreId)
 	}
