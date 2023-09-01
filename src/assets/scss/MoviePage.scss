@@ -4,7 +4,11 @@
 
 .scroll-bar-actors {
 
-	height: 20rem;
+	max-height: 20rem;
+}
+
+.scroll-bar-actors,
+.actors-card-body-scroll {
 	overflow: scroll;
 	-ms-overflow-style: none;
 	/* IE and Edge */
@@ -13,7 +17,8 @@
 
 }
 
-.scroll-bar-actors::-webkit-scrollbar {
+.scroll-bar-actors::-webkit-scrollbar,
+.actors-card-body-scroll::-webkit-scrollbar {
 	display: none;
 }
 

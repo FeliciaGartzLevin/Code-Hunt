@@ -35,7 +35,7 @@ const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 									}} />}
 								</Link>
 
-								<Card.Body style={{
+								<Card.Body className='actors-card-body-scroll' style={{
 									maxHeight: '13rem',
 									overflowY: 'scroll',
 								}}>
