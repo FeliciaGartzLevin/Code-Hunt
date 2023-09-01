@@ -14,9 +14,12 @@ type Props = {
 const ActorsWithPicsCards: React.FC<Props> = ({ actorsWithPics }) => {
 	const imgSize = 'w200'
 	return (
-		<Container fluid className='mb-3'>
+		<Container fluid className='mb-3 actor-cards-container' style={{
+			// maxHeight: '40rem',
+			// borderBottom: ,
+		}}>
 
-			<Row className='d-flex flex-row'>
+			<Row className='d-flex flex-row actors-card-body-scroll side-scroll'>
 
 				{/* Actors with pictures */}
 				{actorsWithPics && actorsWithPics.map(actor => {

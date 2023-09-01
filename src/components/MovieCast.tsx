@@ -15,34 +15,42 @@ const MovieCast: React.FC<Props> = ({ cast }) => {
 
 	return (
 		<>
-			<h3 className=''>Cast</h3>
-			<ActorsWithPicsCards
-				actorsWithPics={actorsWithPics}
-			/>
+			{actorsWithPics && (
+				<>
+					<h3 className=''>Cast</h3>
+					<ActorsWithPicsCards
+						actorsWithPics={actorsWithPics}
+					/>
+				</>
+			)}
 
-			{/* Actors wihout pics table: */}
-			<Container fluid className='scroll-bar-actors mb-3'>
-				<Table variant='dark' striped bordered hover>
-					<thead>
-						<tr>
-							<th>First Name</th>
-							<th>Character</th>
-							<th>Popularity</th>
-						</tr>
-					</thead>
-					<tbody>
-						{actorsWithoutPics && actorsWithoutPics.map(actor => {
-							return (
-								<tr key={actor.cast_id}>
-									<td><Link id='actor-links' to={'/actor/' + actor.id}>{actor.name}</Link></td>
-									<td>{actor.character}</td>
-									<td>{actor.popularity}</td>
+			{actorsWithoutPics.length > 0 && (
+				<>
+					{/* Actors wihout pics table: */}
+					<Container fluid className='scroll-bar-actors mb-3'>
+						<Table variant='dark' striped bordered hover>
+							<thead>
+								<tr>
+									<th>First Name</th>
+									<th>Character</th>
+									<th>Popularity</th>
 								</tr>
-							)
-						})}
-					</tbody>
-				</Table>
-			</Container>
+							</thead>
+							<tbody>
+								{actorsWithoutPics.map(actor => {
+									return (
+										<tr key={actor.cast_id}>
+											<td><Link id='actor-links' to={'/actor/' + actor.id}>{actor.name}</Link></td>
+											<td>{actor.character}</td>
+											<td>{actor.popularity}</td>
+										</tr>
+									)
+								})}
+							</tbody>
+						</Table>
+					</Container>
+				</>
+			)}
 
 		</>
 

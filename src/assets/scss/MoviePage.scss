@@ -2,8 +2,17 @@
 	background-color: beige;
 }
 
-.scroll-bar-actors {
+.actor-cards-container {}
 
+.actors-card-body-scroll.side-scroll {
+	@media screen and (max-width: 576px) {
+		max-height: 40rem;
+	}
+
+	max-height: 35rem;
+}
+
+.scroll-bar-actors {
 	max-height: 20rem;
 }
 

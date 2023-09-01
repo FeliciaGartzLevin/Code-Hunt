@@ -25,7 +25,6 @@ const Navigation = () => {
 				<Navbar.Collapse id="basic-navbar-nav" >
 					<Nav className="px-3 ms-auto collapsing-items" onClick={handleNavItemClick} >
 						<Nav.Link className='collapsing-item' as={NavLink} end to="/movies">Movies</Nav.Link>
-						<Nav.Link className='collapsing-item' as={NavLink} end to="/people">People</Nav.Link>
 						<Nav.Link className='collapsing-item' as={NavLink} end to="/genres">Genres</Nav.Link>
 						<Nav.Link className='collapsing-item' as={NavLink} end to="/api">API</Nav.Link>
 					</Nav>

@@ -13,6 +13,9 @@ type Props = {
 
 const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 
+	console.log('movieData.credits.cast.length:', movieData.credits.cast.length)
+	console.log('movieData.credits.crew.length:', movieData.credits.crew.length)
+
 	return (
 		<>
 			<UpperMovieGrid
@@ -23,13 +26,15 @@ const MoviePresentation: React.FC<Props> = ({ movieData }) => {
 				movieData={movieData}
 			/>
 
-			{movieData.credits.cast.length > 0 && <MovieCast
-				cast={movieData.credits.cast}
-			/>}
+			{movieData.credits.cast.length > 0 &&
+				<MovieCast
+					cast={movieData.credits.cast}
+				/>}
 
-			{movieData.credits.crew.length > 0 && <MovieCrew
-				crew={movieData.credits.crew}
-			/>}
+			{movieData.credits.crew.length > 0 &&
+				<MovieCrew
+					crew={movieData.credits.crew}
+				/>}
 
 			<InfoGrid
 				movieData={movieData}
